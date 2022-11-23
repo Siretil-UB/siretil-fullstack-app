@@ -7,7 +7,12 @@ module.exports = {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                'roboto': ['Roboto', 'sans-serif'],
+                'roboto-slab': ['"Roboto Slab"', 'serif']
+            }
+        },
     },
     plugins: [],
 };
