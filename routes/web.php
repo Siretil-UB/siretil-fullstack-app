@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post("/login", [LoginController::class, 'authenticate'])->name('login');
+Route::get("/login", [LoginController::class, 'getForm']);
+
+// protected route
+Route::middleware('auth')->group( function () {
+        Route::get("/tes", function(){
+            return view('welcome');
+        });
+        Route::get("/tes2", function(){
+            return view('welcome');
+        });
+    }
+);
