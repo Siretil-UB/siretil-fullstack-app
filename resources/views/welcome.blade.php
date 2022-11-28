@@ -277,7 +277,11 @@
         .w-auto {
             width: auto
         }
-
+<form method="DELETE" action={{route('logout')}}>
+        <button type="submit">
+        Logout
+        </button>
+    </form>
         .grid-cols-1 {
             grid-template-columns: repeat(1, minmax(0, 1fr))
         }
@@ -548,6 +552,13 @@
                 <div class="ml-4 text-center text-sm text-gray-500 sm:ml-0 sm:text-right">
                     Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                 </div>
+                <form method="POST" action={{route('logout')}}>
+                    @csrf
+                    <input name="_method" type="hidden" value="DELETE">
+                    <button type="submit">
+                    Logout
+                    </button>
+                </form>
             </div>
         </div>
     </div>
