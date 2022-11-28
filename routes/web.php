@@ -20,3 +20,14 @@ Route::get('/', function () {
 
 Route::post("/login", [LoginController::class, 'authenticate'])->name('login');
 Route::get("/login", [LoginController::class, 'getForm']);
+
+// protected route
+Route::middleware('auth')->group( function () {
+        Route::get("/tes", function(){
+            return view('welcome');
+        });
+        Route::get("/tes2", function(){
+            return view('welcome');
+        });
+    }
+);
