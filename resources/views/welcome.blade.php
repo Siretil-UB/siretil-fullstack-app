@@ -277,11 +277,7 @@
         .w-auto {
             width: auto
         }
-<form method="DELETE" action={{route('logout')}}>
-        <button type="submit">
-        Logout
-        </button>
-    </form>
+
         .grid-cols-1 {
             grid-template-columns: repeat(1, minmax(0, 1fr))
         }
