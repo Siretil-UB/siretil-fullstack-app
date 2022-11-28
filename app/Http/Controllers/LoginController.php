@@ -8,8 +8,10 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
+    // use AuthenticatesUsers;
+
     public function getForm(){
-        return view("welcome");
+        return view('login');
     }
 
     public function authenticate(Request $request){
@@ -19,6 +21,9 @@ class LoginController extends Controller
                 'error' => 'username/password kosong',
             ]);
         }
+
+        // print_r($request->nim);
+        // print_r($request->password);
 
         $credentials = $request->validate([
             'nim' => ['required', 'max:15'],
