@@ -9,11 +9,12 @@
     <title>SIRETIL || Login</title>
 </head>
 
-<body class="grid h-screen items-center bg-blue-800">
+<body class="flex h-screen items-center bg-blue-800">
     {{-- FORM CONTAINER --}}
     <div class="mx-auto flex h-[550px] w-3/4 flex-row overflow-hidden rounded bg-white shadow-md shadow-black">
         {{-- FORM --}}
-        <form method="POST" action={{route('login')}} class="flex w-[35%] flex-col items-center justify-center bg-white">
+        <form method="POST" action={{ route('login') }}
+            class="flex w-[35%] flex-col items-center justify-center bg-white">
             @csrf
             <h1 class="mb-0 text-center font-roboto text-[3.5rem] font-medium text-blue-800"><span
                     class="font-bold text-orange-400">SI</span>RETIL</h1>
