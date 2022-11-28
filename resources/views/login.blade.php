@@ -13,7 +13,8 @@
     {{-- FORM CONTAINER --}}
     <div class="mx-auto flex h-[550px] w-3/4 flex-row overflow-hidden rounded bg-white shadow-md shadow-black">
         {{-- FORM --}}
-        <form action="" class="flex w-[35%] flex-col items-center justify-center bg-white">
+        <form method="POST" action={{route('login')}} class="flex w-[35%] flex-col items-center justify-center bg-white">
+            @csrf
             <h1 class="mb-0 text-center font-roboto text-[3.5rem] font-medium text-blue-800"><span
                     class="font-bold text-orange-400">SI</span>RETIL</h1>
             <p class="text-center font-roboto text-[.75rem] font-semibold text-blue-800"><span
@@ -37,8 +38,12 @@
                 class="w-4/6 rounded-md bg-orange-400 py-[.1rem] font-roboto-slab text-lg text-white">Masuk</button>
         </form>
         {{-- IMAGE --}}
+
         <div class="h-full w-[65%] bg-[url('/public/assets/image/ub_image.png')] bg-cover bg-center"></div>
     </div>
+
+    {{-- access error --}}
+    <div>{{ $errors->first('error') }}</div>
 </body>
 
 </html>
