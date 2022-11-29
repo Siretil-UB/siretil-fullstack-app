@@ -8,8 +8,6 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
-    // use AuthenticatesUsers;
-
     public function getForm(){
         return view('login');
     }
@@ -21,9 +19,6 @@ class LoginController extends Controller
                 'error' => 'username/password kosong',
             ]);
         }
-
-        // print_r($request->nim);
-        // print_r($request->password);
 
         $credentials = $request->validate([
             'nim' => ['required', 'max:15'],
@@ -39,5 +34,14 @@ class LoginController extends Controller
         return back()->withErrors([
             'error' => 'username/password salah',
         ]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('login');
     }
 }
