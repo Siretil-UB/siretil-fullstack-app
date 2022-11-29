@@ -17,7 +17,7 @@
 
 <body class="">
     <nav class="absolute top-0 left-0 bottom-0 w-[80px] bg-blue-800 py-10"></nav>
-    <div class="mx-auto h-screen w-[1100px] border border-solid border-red-800 py-10">
+    <div class="mx-auto h-screen w-[1100px] border border-solid py-10">
         <h1 class="text-2xl font-extrabold italic text-orange-400">SISTEM REKRUTMEN TIM LOMBA</h1>
         <h2 class="text-2xl font-bold italic text-blue-800">UNIVERSITAS BRAWIJAYA</h2>
         @yield('content')
