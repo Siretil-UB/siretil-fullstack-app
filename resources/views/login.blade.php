@@ -27,13 +27,15 @@
                 Rekrutmen Tim Lomba
             </p>
             <div class="relative mb-5 mt-5 flex w-4/6 flex-col">
-                <label class="absolute top-[-10px] left-[10px] bg-white px-1 font-roboto-slab text-base text-slate-500"
+                <label
+                    class="absolute top-[-10px] left-[10px] my-0 bg-white py-0 px-1 font-roboto-slab text-sm text-slate-500"
                     for="nim">NIM</label>
                 <input type="text" name="nim"
                     class="w-full rounded-md border-2 border-solid border-slate-200 px-3 py-2 font-roboto text-xs tracking-wider text-slate-600 outline-slate-200">
             </div>
             <div class="relative flex w-4/6 flex-col">
-                <label class="absolute top-[-10px] left-[10px] bg-white px-1 font-roboto-slab text-base text-slate-500"
+                <label
+                    class="absolute top-[-10px] left-[10px] my-0 bg-white py-0 px-1 font-roboto-slab text-sm text-slate-500"
                     for="password">Kata
                     Sandi</label>
                 <input type="password" name="password"
