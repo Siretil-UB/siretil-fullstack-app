@@ -25,7 +25,9 @@ Route::delete('logout', [LoginController::class, 'logout'])->middleware('auth')-
 // protected route
 Route::middleware('auth')->group( function () {
         Route::get("/", function(){
-            return view('home');
+            return view('home', [
+                'page' => 'home'
+            ]);
         });
         Route::get("/tes2", function(){
             return view('welcome');
