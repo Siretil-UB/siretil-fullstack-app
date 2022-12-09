@@ -29,8 +29,10 @@ Route::middleware('auth')->group( function () {
                 'page' => 'home'
             ]);
         });
-        Route::get("/tes2", function(){
-            return view('welcome');
+        Route::get("/profile", function(){
+            return view('profile', [
+                'page' => 'profile'
+            ]);
         });
     }
 );
