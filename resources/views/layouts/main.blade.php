@@ -22,27 +22,27 @@
 
 <body class="">
     <nav class="absolute top-0 left-0 bottom-0 flex h-full w-[80px] flex-col gap-8 bg-blue-800 py-10">
-        <a href="" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'home')
+        <a href="/" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'home')
             bg-orange-400
         @endif ">
             <i class="fa-solid fa-house"></i>
         </a>
-        <a href="" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'search')
+        <a href="/search" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'search')
             bg-orange-400
         @endif">
             <i class="fa-solid fa-magnifying-glass"></i>
         </a>
-        <a href="" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'team')
+        <a href="/team" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'team')
             bg-orange-400
         @endif">
             <i class="fa-solid fa-users"></i>
         </a>
-        <a href="" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'profile')
+        <a href="/profile" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'profile')
             bg-orange-400
         @endif">
             <i class="fa-sharp fa-solid fa-user"></i>
         </a>
-        <a href="" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'notification')
+        <a href="/notification" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'notification')
             bg-orange-400
         @endif">
             <i class="fa-solid fa-bell"></i>
