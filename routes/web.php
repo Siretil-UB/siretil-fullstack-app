@@ -34,5 +34,20 @@ Route::middleware('auth')->group( function () {
                 'page' => 'profile'
             ]);
         });
+        Route::get("/search", function(){
+            return view('search', [
+                'page' => 'search'
+            ]);
+        });
+        Route::get("/team", function(){
+            return view('team', [
+                'page' => 'team'
+            ]);
+        });
+        Route::get("/notification", function(){
+            return view('notification', [
+                'page' => 'notification'
+            ]);
+        });
     }
 );
