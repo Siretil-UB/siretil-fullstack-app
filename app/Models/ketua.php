@@ -11,7 +11,6 @@ class ketua extends Model
 
     protected $table = 'ketua';
     protected $primary_key = "Pengguna_NIM";
-    public $timestamps = false;
 
     protected $fillable = ['Pengguna_NIM'];
 

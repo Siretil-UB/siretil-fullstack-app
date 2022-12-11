@@ -10,7 +10,7 @@ class Mahasiswa extends Model
     use HasFactory;
 
     protected $table = 'mahasiswa';
-    protected $primary_key = "Pengguna_NIM";
+    protected $primaryKey = "Pengguna_NIM";
 
     protected $fillable = ['Pengguna_NIM', 'cv', 'role', 'wa'];
 
@@ -25,7 +25,7 @@ class Mahasiswa extends Model
     {
         try {
             if (isset($nama)) {
-                $this->nama = $nama;
+                $this->user->nama = $nama;
             }
             if (isset($role)) {
                 $this->role = $role;
@@ -37,9 +37,11 @@ class Mahasiswa extends Model
                 $this->cv = $cv;
             }
             $this->save();
+            $this->user->save();
 
             return true;
         } catch (\Throwable $th) {
+            // print_r($th);
             return false;
         }
     }
@@ -54,8 +56,8 @@ class Mahasiswa extends Model
         return $result;
     }
 
-    public function sendMsg($disetujui)
+    public function profileFo()
     {
-        # code...
+        return ['nama'=>$this->user->nama, 'role'=>$this->role, 'cv'=>$this->cv, 'wa'=>$this->wa];
     }
 }

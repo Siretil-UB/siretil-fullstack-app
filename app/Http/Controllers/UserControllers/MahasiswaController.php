@@ -10,10 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class MahasiswaController extends Controller
 {
     public function getProfile(){
-        $user = Auth::user();
-        $profileInfo = ['name'=>$user->nama,'nim'=>$user->nim];
-        $profileInfo['tes'] = 'tes';
-        print_r($profileInfo);
+        $profileInfo = Auth::user()->mahasiswa->profileFo();
+        return view('home', ['profileInfo'=>$profileInfo]);
     }
 
     public function reqMenuUnggahData()
@@ -26,8 +24,10 @@ class MahasiswaController extends Controller
         return redirect('home');
     }
 
+    // logic finish
     public function reqUnggah(Request $request)
     {
+        $request = new Request(['nama'=>'yo', 'role'=>'yo', 'nomorWA'=>'yo', 'cv'=>'cv']);
         $mahasiswa = Auth::user()->mahasiswa;
 
         $pesanDataBerhasilDiunggah = $mahasiswa->setData($request->nama, $request->role, $request->nomorWA, $request->cv);
@@ -37,6 +37,7 @@ class MahasiswaController extends Controller
         }
     }
 
+    // logic finish
     public function reqMahasiswa(Request $request)
     {
         $input = $request->validate([
@@ -44,5 +45,7 @@ class MahasiswaController extends Controller
         ]);
 
         $result = Mahasiswa::getMahasiswa($input['input']);
+
+        return view('home', ['result'=>$result]);
     }
 }
