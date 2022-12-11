@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class LoginController extends Controller
 {
-    public function getForm(){
+    public function loginForm(){
         return view('login');
     }
 
-    public function authenticate(Request $request){
+    public function login(Request $request){
 
         if(!isset($request->nim) || !isset($request->password)){
             return back()->withErrors([
@@ -20,15 +21,10 @@ class LoginController extends Controller
             ]);
         }
 
-        $credentials = $request->validate([
-            'nim' => ['required', 'max:15'],
-            'password'=>['required']
-        ]);
+        $result = User::validate($request->nim,$request->password);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('/');
+        if ($result) {
+            return redirect('/');
         }
 
         return back()->withErrors([
@@ -45,7 +41,7 @@ class LoginController extends Controller
         return redirect('login');
     }
 
-    public function tes(Request $request){
-        print_r(Auth::user()->ketua);
+    public function getDashboard(){
+        return view('home', ['username'=>Auth::user()->nama,'page' => 'home']);
     }
 }

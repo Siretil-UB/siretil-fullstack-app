@@ -14,4 +14,14 @@ class MahasiswaController extends Controller
         $profileInfo['tes'] = 'tes';
         print_r($profileInfo);
     }
+
+    public function reqMenuUnggahData()
+    {
+        return view('home');
+    }
+
+    public function batalUnggahData()
+    {
+        return view('home');
+    }
 }

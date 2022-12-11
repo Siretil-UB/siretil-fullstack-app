@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -50,5 +51,16 @@ class User extends Authenticatable
     public function ketua()
     {
         return $this->hasOne(ketua::class, 'Pengguna_NIM', 'NIM_Ketua');
+    }
+
+    public static function validate($uname, $password)
+    {
+        if(isset($uname) && isset($password)){
+            if(strlen($uname)<=15){
+                return Auth::attempt(['nim'=>$uname, 'password'=>$password]);
+            }
+        }
+
+        return false;
     }
 }

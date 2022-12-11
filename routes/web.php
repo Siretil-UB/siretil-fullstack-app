@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('guest')->group(function(){
-    Route::post("/login", [LoginController::class, 'authenticate'])->name('login');
-    Route::get("/login", [LoginController::class, 'getForm']);
+    Route::post("/login", [LoginController::class, 'login'])->name('login');
+    Route::get("/login", [LoginController::class, 'loginForm']);
 });
 
 // protected route
