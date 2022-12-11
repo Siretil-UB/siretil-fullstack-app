@@ -51,3 +51,4 @@ Route::middleware('auth')->group( function () {
         });
     }
 );
+Route::get("/tes3", [MahasiswaController::class, 'reqMahasiswa']);
