@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'nama' => 'John Doe',
             'nim' => '205150201111001',
-            'password' => Hash::make("123456789")
+            'password' => Hash::make("123456789"),
+            'isKetua' => true
         ]);
 
         User::factory()->create([
