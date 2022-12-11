@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class MahasiswaController extends Controller
 {
     public function getProfile(){
+        /**
+         * isinya derivative array
+         * ['nama', 'role', 'cv', 'wa', 'nim']
+         */
         $profileInfo = Auth::user()->mahasiswa->profileFo();
         return view('home', ['profileInfo'=>$profileInfo]);
     }
