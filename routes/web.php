@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserControllers\KetuaController;
+use App\Http\Controllers\UserControllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,5 +51,13 @@ Route::middleware('auth')->group( function () {
                 'page' => 'notification'
             ]);
         });
+    }
+);
+
+
+// Test route
+Route::middleware('auth')->group( function () {
+        Route::get("/tes1", [MahasiswaController::class, 'getProfile']);
+        Route::get("/tes2", [KetuaController::class, 'getProfile']);
     }
 );
