@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function mahasiswa()
+    {
+        return $this->hasOne(mahasiswa::class, 'Pengguna_NIM', 'NIM_Mahasiswa');
+    }
+
+    public function ketua()
+    {
+        return $this->hasOne(ketua::class, 'Pengguna_NIM', 'NIM_Ketua');
+    }
 }

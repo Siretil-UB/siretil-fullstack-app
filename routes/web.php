@@ -16,24 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::post("/login", [LoginController::class, 'authenticate'])->name('login');
-Route::get("/login", [LoginController::class, 'getForm']);
-Route::delete('logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
+Route::middleware('guest')->group(function(){
+    Route::post("/login", [LoginController::class, 'authenticate'])->name('login');
+    Route::get("/login", [LoginController::class, 'getForm']);
+});
 
 // protected route
 Route::middleware('auth')->group( function () {
+    // ketua route
+    Route::middleware('can:accessKetua,App\Http\Models\User')->group(function () {
         Route::get("/", function(){
             return view('home', [
                 'page' => 'home'
-            ]);
-        });
-        Route::get("/profile", function(){
-            return view('profile', [
-                'page' => 'profile'
             ]);
         });
         Route::get("/search", function(){
@@ -51,6 +45,18 @@ Route::middleware('auth')->group( function () {
                 'page' => 'notification'
             ]);
         });
+    });
+
+    // mahasiswa route
+    Route::middleware('can:accessMahasiswa,App\Http\Models\User')->group(function(){
+        Route::get("/profile", function(){
+            return view('profile', [
+                'page' => 'profile'
+            ]);
+        });
+    });
+
+    Route::delete('logout', [LoginController::class, 'logout'])->name('logout');
     }
 );
 

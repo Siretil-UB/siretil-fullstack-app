@@ -44,4 +44,8 @@ class LoginController extends Controller
 
         return redirect('login');
     }
+
+    public function tes(Request $request){
+        print_r(Auth::user()->ketua);
+    }
 }

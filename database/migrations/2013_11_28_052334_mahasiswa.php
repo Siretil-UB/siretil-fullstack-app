@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->string("Pengguna_NIM", 20)->primary();
-            $table->string("cv", 40);
-            $table->string("role", 20);
-            $table->string("wa", 20);
+            $table->string("cv", 40)->nullable();
+            $table->string("role", 20)->nullable();
+            $table->string("wa", 20)->nullable();
         });
     }
 
