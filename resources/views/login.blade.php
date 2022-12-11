@@ -31,7 +31,7 @@
                     class="absolute top-[-10px] left-[10px] my-0 bg-white py-0 px-1 font-roboto-slab text-sm text-slate-500"
                     for="nim">NIM</label>
                 <input type="text" name="nim"
-                    class="w-full rounded-md border-2 border-solid border-slate-200 px-3 py-2 font-roboto text-xs tracking-wider text-slate-600 outline-slate-200">
+                    class="w-full rounded-md border-2 border-solid border-slate-200 px-3 py-[10px] font-roboto text-xs tracking-wider text-slate-600 outline-slate-200">
             </div>
             <div class="relative flex w-4/6 flex-col">
                 <label
@@ -39,7 +39,7 @@
                     for="password">Kata
                     Sandi</label>
                 <input type="password" name="password"
-                    class="mb-5 w-full rounded-md border-2 border-solid border-slate-200 px-3 py-2 font-roboto text-xs tracking-wider text-slate-600 outline-slate-200">
+                    class="mb-5 w-full rounded-md border-2 border-solid border-slate-200 px-3 py-[10px] font-roboto text-xs tracking-wider text-slate-600 outline-slate-200">
             </div>
             <button type="submit"
                 class="w-4/6 rounded-md bg-orange-400 py-[.1rem] font-roboto-slab text-lg text-white">Masuk</button>
