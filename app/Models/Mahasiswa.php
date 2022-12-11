@@ -58,6 +58,6 @@ class Mahasiswa extends Model
 
     public function profileFo()
     {
-        return ['nama'=>$this->user->nama, 'role'=>$this->role, 'cv'=>$this->cv, 'wa'=>$this->wa];
+        return ['nama'=>$this->user->nama, 'role'=>$this->role, 'cv'=>$this->cv, 'wa'=>$this->wa, 'nim'=>$this->user->nim];
     }
 }
