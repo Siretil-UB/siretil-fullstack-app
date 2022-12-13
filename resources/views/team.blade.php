@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@dd($tim)
+{{-- @dd($tim) --}}
     <p class="mt-5 mb-4 text-4xl font-bold font-roboto-slab">TIM ANDA</p>
     <div class="w-full h-[80%] bg-blue-700 p-10">
         @if ($isKetua==true)
@@ -20,18 +20,18 @@
                     <thead>
                         <tr>
                             <th class="text-xl border border-slate-400">Role</th>
-                            <th class="text-xl border border-slate-400">Fakultas</th>
-                            <th class="text-xl border border-slate-400">Jurusan</th>
+                            {{-- <th class="text-xl border border-slate-400">Fakultas</th>
+                            <th class="text-xl border border-slate-400">Jurusan</th> --}}
                             <th class="text-xl border border-slate-400">Nama</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($tim['anggota'] as $a)
                             <tr class="">
-                                <td class="border border-slate-400">{{$a->role}}</td>
-                                <td class="border border-slate-400">FILKOM</td>
-                                <td class="border border-slate-400">TIF</td>
-                                <td class="border border-slate-400">{{$a}}</td>
+                                <td class="border border-slate-400">{{$a['role']}}</td>
+                                {{-- <td class="border border-slate-400">FILKOM</td>
+                                <td class="border border-slate-400">TIF</td> --}}
+                                <td class="border border-slate-400">{{$a['nama']}}</td>
                             </tr>
                         @endforeach
 
