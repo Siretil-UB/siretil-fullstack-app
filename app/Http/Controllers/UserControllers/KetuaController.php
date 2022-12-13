@@ -39,8 +39,8 @@ class KetuaController extends Controller
                 'tim' => 'tim'
             ]);
         } catch (\Throwable $th) {
-            return redirect()->route('ketua-home',[
-                'page' => 'home',
+            return view('team',[
+                'page' => 'team',
                 'user' => Auth::user()->nama,
                 'isKetua' => true,
                 'error' => 'Gagal mengambil data tim'
@@ -50,9 +50,9 @@ class KetuaController extends Controller
 
     public function getProfile(){
         $profileInfo = Auth::user()->ketua->profileFo();
-        return view('home', [
-            'page' => 'home',
-            'user' => Auth::user()->nama,
+        return view('profile', [
+            'page' => 'profile',
+            'user' => Auth::user(),
             'isKetua' => true,
             'profileInfo'=>$profileInfo
         ]);
