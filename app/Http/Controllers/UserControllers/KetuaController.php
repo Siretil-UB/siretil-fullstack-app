@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\UserControllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Anggota;
+use App\Models\Mahasiswa;
 use App\Models\Ketua;
 use App\Models\Tim;
-use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -112,5 +111,21 @@ class KetuaController extends Controller
             return view('home', ['result'=>'Kriteria berhasil diunggah!']);
         }
         return view('home', ['error'=>'Pesan berhasil diunggah!']);
+    }
+
+    public function reqMenuPengajuan()
+    {
+        try {
+            $pengajuan = Auth::user()->ketua->tim->pengajuan->all();
+            $dataPengajuan = array();
+
+            foreach ($pengajuan as  $value) {
+                array_push($dataPengajuan,$value->getAttributes());
+            }
+
+            return view('notification',['result'=>$dataPengajuan, 'page']);
+        } catch (\Throwable $th) {
+            return view('notification',['error'=>'gagal mengambil data']);
+        }
     }
 }

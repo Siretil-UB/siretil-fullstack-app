@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ketua>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Pengajuan>
  */
-class ketuaFactory extends Factory
+class PengajuanFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,9 @@ class ketuaFactory extends Factory
     public function definition()
     {
         return [
-            'Pengguna_NIM' => '0'
+            'Tim_Ketua_Pengguna_NIM' => '205150201111001',
+            'Tim_namaTim'=>'tim1',
+            'Mahasiswa_Pengguna_NIM' => '205150201111002'
         ];
     }
 }

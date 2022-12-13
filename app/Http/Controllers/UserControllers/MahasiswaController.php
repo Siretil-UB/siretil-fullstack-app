@@ -4,6 +4,7 @@ namespace App\Http\Controllers\UserControllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ketua;
+use App\Models\Pengajuan;
 use App\Models\Tim;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -92,5 +93,26 @@ class MahasiswaController extends Controller
         }
 
         return view('home', ['error'=>'Tim tidak ada!']);
+    }
+
+    public function reqGabungTim(Request $request)
+    {
+        $input = $request->validate([
+            'namaTim' => 'required',
+            'nimKetua' => 'required',
+            'nimMahasiswa' => 'required'
+        ]);
+
+        $nimMahasiswa = Auth::user()->mahasiswa->nim;
+
+        try {
+            $pengajuan = new Pengajuan;
+            $pengajuan->Tim_Ketua_Pengguna_NIM = $input['nimKetua'];
+            $pengajuan->Tim_namaTim = $input['namaTim'];
+            $pengajuan->Mahasiswa_Pengguna_NIM = $nimMahasiswa;
+            return redirect()->route('home',['result'=>'Berhasil mengajukan gabung']);
+        } catch (\Throwable $th) {
+            return redirect()->route('home',['error'=>'Gagal mengajukan gabung']);
+        }
     }
 }

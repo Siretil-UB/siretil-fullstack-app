@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class Ketua extends Model
 {
@@ -72,5 +73,9 @@ class Ketua extends Model
 
             return false;
         }
+    }
+
+    public function sendMsg($nim){
+        Log::info("Mahasiswa dengan nim $nim melakukan pengajuan masuk tim Anda");
     }
 }

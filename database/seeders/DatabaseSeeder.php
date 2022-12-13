@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Anggota;
 use App\Models\Ketua;
 use App\Models\Mahasiswa;
+use App\Models\Pengajuan;
 use App\Models\Tim;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -72,6 +73,24 @@ class DatabaseSeeder extends Seeder
             'Tim_Ketua_Pengguna_NIM' => '205150201111001',
             'Tim_namaTim' => 'tim1',
             'Mahasiswa_Pengguna_NIM' => '205150201111002'
+        ]);
+
+        Anggota::factory()->create([
+            'Tim_Ketua_Pengguna_NIM' => '205150201111001',
+            'Tim_namaTim' => 'tim1',
+            'Mahasiswa_Pengguna_NIM' => '205150201111003'
+        ]);
+
+        Pengajuan::factory()->create([
+            'Tim_Ketua_Pengguna_NIM' => '205150201111001',
+            'Tim_namaTim'=>'tim1',
+            'Mahasiswa_Pengguna_NIM' => '205150201111002'
+        ]);
+
+        Pengajuan::factory()->create([
+            'Tim_Ketua_Pengguna_NIM' => '205150201111001',
+            'Tim_namaTim'=>'tim1',
+            'Mahasiswa_Pengguna_NIM' => '205150201111003'
         ]);
 
     }

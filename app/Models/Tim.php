@@ -26,6 +26,10 @@ class Tim extends Model
         return $this->belongsTo(Anggota::class, 'namaTim', 'Tim_namaTim');
     }
 
+    public function pengajuan()
+    {
+        return $this->belongsTo(Pengajuan::class, 'namaTim', 'Tim_namaTim');
+    }
     public static function createTim($namaTim, $ketua, $lomba, $anggota)
     {
         try {

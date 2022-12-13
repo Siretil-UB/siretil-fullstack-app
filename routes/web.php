@@ -54,4 +54,4 @@ Route::middleware('auth')->group( function () {
 
 // Test route
 Route::get("/tes1", [MahasiswaController::class, 'reqTim']);
-Route::get("/tes2", [KetuaController::class, 'getTim']);
+Route::get("/tes2", [KetuaController::class, 'reqMenuPengajuan']);
