@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UserControllers\KetuaController;
 use App\Http\Controllers\UserControllers\MahasiswaController;
+use App\Http\Controllers\UserControllers\KetuaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,3 +67,4 @@ Route::middleware('auth')->group( function () {
         Route::get("/tes2", [KetuaController::class, 'getProfile']);
     }
 );
+Route::get("/tes3", [MahasiswaController::class, 'reqUnggah']);

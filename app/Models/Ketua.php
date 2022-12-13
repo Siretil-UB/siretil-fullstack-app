@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ketua extends Model
+class Ketua extends Model
 {
     use HasFactory;
 
@@ -13,6 +13,7 @@ class ketua extends Model
     protected $primary_key = "Pengguna_NIM";
 
     protected $fillable = ['Pengguna_NIM'];
+    public $timestamps = false;
 
     public function user()
     {

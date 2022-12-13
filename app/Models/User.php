@@ -13,6 +13,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $primaryKey = 'nim';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -45,12 +47,12 @@ class User extends Authenticatable
 
     public function mahasiswa()
     {
-        return $this->hasOne(mahasiswa::class, 'Pengguna_NIM', 'NIM_Mahasiswa');
+        return $this->hasOne(Mahasiswa::class, 'Pengguna_NIM', 'NIM_Mahasiswa');
     }
 
     public function ketua()
     {
-        return $this->hasOne(ketua::class, 'Pengguna_NIM', 'NIM_Ketua');
+        return $this->hasOne(Ketua::class, 'Pengguna_NIM', 'NIM_Ketua');
     }
 
     public static function validate($uname, $password)
