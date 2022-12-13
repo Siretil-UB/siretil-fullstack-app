@@ -69,7 +69,7 @@ class Ketua extends Model
 
             return true;
         } catch (\Throwable $th) {
-            print($th);
+            print_r($th);
 
             return false;
         }

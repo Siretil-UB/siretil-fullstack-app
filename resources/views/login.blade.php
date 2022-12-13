@@ -13,7 +13,7 @@
         rel="stylesheet">
 </head>
 
-<body class="flex h-screen items-center bg-blue-800">
+<body class="flex items-center h-screen bg-blue-800">
     {{-- FORM CONTAINER --}}
     <div class="mx-auto flex h-[550px] w-3/4 flex-row overflow-hidden rounded bg-white shadow-md shadow-black">
         {{-- FORM --}}
@@ -22,25 +22,27 @@
             @csrf
             <h1 class="mb-0 text-center font-roboto text-[3.5rem] font-medium text-blue-800"><span
                     class="font-bold text-orange-400">SI</span>RETIL</h1>
-            <p class="text-center font-roboto text-[.75rem] font-semibold text-blue-800"><span
+            <p class="text-center font-roboto text-[.75rem] font-semibold text-blue-800 mb-2"><span
                     class="text-orange-400">Sistem</span>
                 Rekrutmen Tim Lomba
             </p>
-            <div class="relative mb-5 mt-5 flex w-4/6 flex-col">
+            <p class="text-red-500">{{ $errors->first('error') }}</p>
+            <div class="relative flex flex-col w-4/6 mt-5 mb-5">
                 <label
                     class="absolute top-[-10px] left-[10px] my-0 bg-white py-0 px-1 font-roboto-slab text-sm text-slate-500"
                     for="nim">NIM</label>
-                <input type="text" name="nim"
+                <input type="text" name="nim" required
                     class="w-full rounded-md border-2 border-solid border-slate-200 px-3 py-[10px] font-roboto text-xs tracking-wider text-slate-600 outline-slate-200">
             </div>
-            <div class="relative flex w-4/6 flex-col">
+            <div class="relative flex flex-col w-4/6">
                 <label
                     class="absolute top-[-10px] left-[10px] my-0 bg-white py-0 px-1 font-roboto-slab text-sm text-slate-500"
                     for="password">Kata
                     Sandi</label>
-                <input type="password" name="password"
+                <input type="password" name="password" required
                     class="mb-5 w-full rounded-md border-2 border-solid border-slate-200 px-3 py-[10px] font-roboto text-xs tracking-wider text-slate-600 outline-slate-200">
             </div>
+
             <button type="submit"
                 class="w-4/6 rounded-md bg-orange-400 py-[.1rem] font-roboto-slab text-lg text-white">Masuk</button>
         </form>
@@ -50,7 +52,7 @@
     </div>
 
     {{-- access error --}}
-    <div>{{ $errors->first('error') }}</div>
+    {{-- <div>{{ $errors->first('error') }}</div> --}}
 </body>
 
 </html>

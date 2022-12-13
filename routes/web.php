@@ -35,6 +35,8 @@ Route::middleware('auth')->group( function () {
                     'isKetua' => true
                 ]);
             });
+            Route::post("/search", [KetuaController::class, 'reqMahasiswa']);
+            Route::post('/hapus', [KetuaController::class, 'reqHapusTim'])->name('user.index');
         });
     });
 
@@ -42,6 +44,7 @@ Route::middleware('auth')->group( function () {
     Route::middleware('can:accessMahasiswa,App\Http\Models\User')->group(function(){
         Route::get("/", [MahasiswaController::class, 'getHome'])->name('mahasiswa-home');
         Route::get("/search", [MahasiswaController::class, 'reqMenuCariTim']);
+        Route::post("/search", [MahasiswaController::class, 'reqTim']);
         Route::get("/profile", [MahasiswaController::class, 'getProfile']);
         Route::get('/team',[MahasiswaController::class, 'getTim']);
         Route::get("/notification", function(){

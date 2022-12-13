@@ -68,6 +68,7 @@ class KetuaController extends Controller
 
     public function reqHapusTim(Request $request)
     {
+
         $input = $request->validate([
             'namaTim' => 'required',
             'namaKetua' => 'required'
@@ -77,24 +78,26 @@ class KetuaController extends Controller
         $resultDeleteKetua = Ketua::deleteKetua($input['namaKetua']);
 
         if($resultDeleteKetua&&$resultDeleteTim){
-            return view('home', ['result'=>'Tim telah berhasil dihapus']);
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
         }
+
     }
 
     public function reqMahasiswa(Request $request)
     {
         $input = $request->validate([
-            'keyword'=>'required'
+            'keyword'=>'string'
         ]);
 
         $result = Mahasiswa::getMahasiswa($input['keyword']);
 
         if(sizeof($result)>0){
-            print_r($result);
-            return view('home', ['result'=>$result]);
+            return view('searchMhs', ['data'=>$result, 'page'=>'searchMhs', 'isKetua'=>true]);
         }
 
-        return view('home', ['error'=>'Data tidak ada!']);
+        return view('searchMhs', ['data'=>null, 'error'=>'Anggota tidak ada!', 'page'=>'searchMhs', 'isKetua'=>true]);
     }
 
     public function reqMenuCariAnggota(){
