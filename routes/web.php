@@ -25,25 +25,32 @@ Route::middleware('guest')->group(function(){
 Route::middleware('auth')->group( function () {
     // ketua route
     Route::middleware('can:accessKetua,App\Http\Models\User')->group(function () {
-        Route::get("/", function(){
-            return view('home', [
-                'page' => 'home'
-            ]);
-        });
-        Route::get("/search", function(){
-            return view('search', [
-                'page' => 'search'
-            ]);
-        });
-        Route::get("/team", function(){
-            return view('team', [
-                'page' => 'team'
-            ]);
-        });
-        Route::get("/notification", function(){
-            return view('notification', [
-                'page' => 'notification'
-            ]);
+        Route::prefix('/ketua')->group(function (){
+            Route::get("/", function(){
+                return view('home', [
+                    'page' => 'home'
+                ]);
+            });
+            Route::get("/search", function(){
+                return view('search', [
+                    'page' => 'search'
+                ]);
+            });
+            Route::get("/team", function(){
+                return view('team', [
+                    'page' => 'team'
+                ]);
+            });
+            Route::get("/notification", function(){
+                return view('notification', [
+                    'page' => 'notification'
+                ]);
+            });
+            Route::get("/profile", function(){
+                return view('profile', [
+                    'page' => 'profile'
+                ]);
+            });
         });
     });
 
