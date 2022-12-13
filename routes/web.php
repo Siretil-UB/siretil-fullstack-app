@@ -26,29 +26,13 @@ Route::middleware('auth')->group( function () {
     // ketua route
     Route::middleware('can:accessKetua,App\Http\Models\User')->group(function () {
         Route::prefix('/ketua')->group(function (){
-            Route::get("/", function(){
-                return view('home', [
-                    'page' => 'home'
-                ]);
-            });
-            Route::get("/search", function(){
-                return view('search', [
-                    'page' => 'search'
-                ]);
-            });
-            Route::get("/team", function(){
-                return view('team', [
-                    'page' => 'team'
-                ]);
-            });
+            Route::get("/", [KetuaController::class, 'getHome'])->name('ketua-home');
+            Route::get("/team", [KetuaController::class, 'getTeam']);
+            Route::get("/profile", [KetuaController::class, 'getProfile']);
+
             Route::get("/notification", function(){
                 return view('notification', [
                     'page' => 'notification'
-                ]);
-            });
-            Route::get("/profile", function(){
-                return view('profile', [
-                    'page' => 'profile'
                 ]);
             });
         });
@@ -70,4 +54,4 @@ Route::middleware('auth')->group( function () {
 
 // Test route
 Route::get("/tes1", [MahasiswaController::class, 'reqTim']);
-Route::get("/tes2", [KetuaController::class, 'reqUnggah']);
+Route::get("/tes2", [KetuaController::class, 'getTim']);

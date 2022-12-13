@@ -21,6 +21,11 @@ class Tim extends Model
         return $this->hasOne(Ketua::class, 'Pengguna_NIM', 'ketua_pengguna_NIM');
     }
 
+    public function anggota()
+    {
+        return $this->belongsTo(Anggota::class, 'namaTim', 'Tim_namaTim');
+    }
+
     public static function createTim($namaTim, $ketua, $lomba, $anggota)
     {
         try {
