@@ -21,36 +21,91 @@
 </head>
 
 <body class="">
-    <nav class="absolute top-0 left-0 bottom-0 flex h-full w-[80px] flex-col gap-8 bg-blue-800 py-10">
-        <a href="/" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'home')
-            bg-orange-400
-        @endif ">
-            <i class="fa-solid fa-house"></i>
-        </a>
-        <a href="/search" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'search')
-            bg-orange-400
-        @endif">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </a>
-        <a href="/team" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'team')
-            bg-orange-400
-        @endif">
-            <i class="fa-solid fa-users"></i>
-        </a>
-        <a href="/profile" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'profile')
-            bg-orange-400
-        @endif">
-            <i class="fa-sharp fa-solid fa-user"></i>
-        </a>
-        <a href="/notification" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'notification')
-            bg-orange-400
-        @endif">
-            <i class="fa-solid fa-bell"></i>
-        </a>
-    </nav>
+    @if ($isKetua == true)
+        <nav class="absolute top-0 left-0 bottom-0 flex h-full w-[80px] flex-col gap-8 bg-blue-800 py-10">
+            <a href="/ketua/" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'home')
+                bg-orange-400
+            @endif ">
+                <i class="fa-solid fa-house"></i>
+            </a>
+            {{-- <a href="/ketua/search" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'search')
+                bg-orange-400
+            @endif">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a> --}}
+            <a href="/ketua/team" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'team')
+                bg-orange-400
+            @endif">
+                <i class="fa-solid fa-users"></i>
+            </a>
+            <a href="/ketua/profile" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'profile')
+                bg-orange-400
+            @endif">
+                <i class="fa-sharp fa-solid fa-user"></i>
+            </a>
+            <a href="/ketua/notification" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'notification')
+                bg-orange-400
+            @endif">
+                <i class="fa-solid fa-bell"></i>
+            </a>
+            {{-- <a href="/ketua/notification" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'notification')
+                bg-orange-400
+            @endif">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a> --}}
+            <form action="/logout" method="post">
+                @csrf
+                {{-- <input type="hidden" > --}}
+                <button type="submit" class="items-center justify-center w-full py-4 text-4xl text-white lex">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </form>
+        </nav>
+    @else
+        <nav class="absolute top-0 left-0 bottom-0 flex h-full w-[80px] flex-col gap-8 bg-blue-800 py-10">
+            <a href="/" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'home')
+                bg-orange-400
+            @endif ">
+                <i class="fa-solid fa-house"></i>
+            </a>
+            <a href="/search" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'search')
+                bg-orange-400
+            @endif">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <a href="/team" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'team')
+                bg-orange-400
+            @endif">
+                <i class="fa-solid fa-users"></i>
+            </a>
+            <a href="/profile" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'profile')
+                bg-orange-400
+            @endif">
+                <i class="fa-sharp fa-solid fa-user"></i>
+            </a>
+            <a href="/notification" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'notification')
+                bg-orange-400
+            @endif">
+                <i class="fa-solid fa-bell"></i>
+            </a>
+            {{-- <a href="/ketua/notification" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'notification')
+                bg-orange-400
+            @endif">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a> --}}
+            <form action="/logout" method="post">
+                @csrf
+                {{-- <input type="hidden" > --}}
+                <button type="submit" class="items-center justify-center w-full py-4 text-4xl text-white lex">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </form>
+        </nav>
+    @endif
+
     <div class="mx-auto h-screen w-[1100px] py-10">
-        <h1 class="text-2xl font-extrabold italic text-orange-400">SISTEM REKRUTMEN TIM LOMBA</h1>
-        <h2 class="text-2xl font-bold italic text-blue-800">UNIVERSITAS BRAWIJAYA</h2>
+        <h1 class="text-2xl italic font-extrabold text-orange-400">SISTEM REKRUTMEN TIM LOMBA</h1>
+        <h2 class="text-2xl italic font-bold text-blue-800">UNIVERSITAS BRAWIJAYA</h2>
         @yield('content')
     </div>
 </body>

@@ -11,13 +11,36 @@ use Illuminate\Support\Facades\Auth;
 
 class MahasiswaController extends Controller
 {
+    public function getHome()
+    {
+        return view(
+            'home',
+            [
+                'page' => 'home',
+                'user' => Auth::user()->nama,
+                'isKetua' => false
+            ]
+        );
+    }
+
     public function getProfile(){
         /**
          * isinya derivative array
          * ['nama', 'role', 'cv', 'wa', 'nim']
          */
-        $profileInfo = Auth::user()->mahasiswa->profileFo();
-        return view('home', ['profileInfo'=>$profileInfo]);
+        // $profileInfo = Auth::user()->mahasiswa->profileFo();
+        return view('profile', [
+            'user'=>Auth::user(),
+            'page'=>'profile',
+            'isKetua'=>false
+        ]);
+    }
+
+    public function getTim() {
+        return view('team', [
+            'page'=>'team',
+            'isKetua'=>false
+        ]);
     }
 
     public function reqMenuUnggahData()
@@ -77,7 +100,10 @@ class MahasiswaController extends Controller
 
     public function reqMenuCariTim()
     {
-        return view('home');
+        return view('search', [
+            'page' => 'search',
+            'isKetua' => false
+        ]);
     }
 
     public function reqTim(Request $request)

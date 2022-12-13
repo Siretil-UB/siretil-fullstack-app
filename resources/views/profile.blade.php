@@ -5,12 +5,19 @@
 @endsection
 
 @section('content')
-    <p class="mt-5 font-roboto-slab text-4xl font-bold mb-8">PROFIL</p>
-    <div class="bg-blue-700 p-10 rounded">
-        <p class="text-white text-2xl font-normal mb-2"><span class="font-bold">Nama : </span>Mohammad Nafi' Baliyamalkan</p>
-        <p class="text-white text-2xl font-normal mb-2"><span class="font-bold">Role : </span>UI UX Designer</p>
-        <p class="text-white text-2xl font-normal mb-2"><span class="font-bold">CV : </span>CV</p>
-        <button class="text-white bg-orange-400 px-2 py-1 font-bold text-2xl rounded">Unggah Data Diri</button>
+    {{-- @dd($user->mahasiswa->role) --}}
+    <p class="mt-5 mb-8 text-4xl font-bold font-roboto-slab">PROFIL</p>
+    <div class="p-10 bg-blue-700 rounded">
+        <p class="mb-2 text-2xl font-normal text-white"><span class="font-bold">Nama : </span>{{$user->nama}}</p>
+        <p class="mb-2 text-2xl font-normal text-white"><span class="font-bold">Role : </span>
+            @if ($isKetua == true)
+                Ketua
+            @else
+                {{$user->mahasiswa->role}}
+            @endif
+        </p>
+        <p class="mb-2 text-2xl font-normal text-white"><span class="font-bold">CV : </span>CV</p>
+        <button class="px-2 py-1 text-2xl font-bold text-white bg-orange-400 rounded">Unggah Data Diri</button>
     </div>
 
 @endsection

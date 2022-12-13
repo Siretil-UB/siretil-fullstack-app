@@ -27,12 +27,12 @@ Route::middleware('auth')->group( function () {
     Route::middleware('can:accessKetua,App\Http\Models\User')->group(function () {
         Route::prefix('/ketua')->group(function (){
             Route::get("/", [KetuaController::class, 'getHome'])->name('ketua-home');
-            Route::get("/team", [KetuaController::class, 'getTeam']);
+            Route::get("/team", [KetuaController::class, 'getTim']);
             Route::get("/profile", [KetuaController::class, 'getProfile']);
-
             Route::get("/notification", function(){
                 return view('notification', [
-                    'page' => 'notification'
+                    'page' => 'notification',
+                    'isKetua' => true
                 ]);
             });
         });
@@ -40,14 +40,19 @@ Route::middleware('auth')->group( function () {
 
     // mahasiswa route
     Route::middleware('can:accessMahasiswa,App\Http\Models\User')->group(function(){
-        Route::get("/profile", function(){
-            return view('profile', [
-                'page' => 'profile'
+        Route::get("/", [MahasiswaController::class, 'getHome'])->name('mahasiswa-home');
+        Route::get("/search", [MahasiswaController::class, 'reqMenuCariTim']);
+        Route::get("/profile", [MahasiswaController::class, 'getProfile']);
+        Route::get('/team',[MahasiswaController::class, 'getTim']);
+        Route::get("/notification", function(){
+            return view('notification', [
+                'page' => 'notification',
+                'isKetua' => false
             ]);
         });
     });
 
-    Route::delete('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
     }
 );
 
