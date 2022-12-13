@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('Tim_namaTim', 20);
             $table->string("fakultas",30);
             $table->string("jurusan",30);
+
             $table->foreign(['Tim_Ketua_Pengguna_NIM', 'Tim_namaTim'])->references(['ketua_pengguna_NIM','namaTim'])->on('tim');
         });
     }

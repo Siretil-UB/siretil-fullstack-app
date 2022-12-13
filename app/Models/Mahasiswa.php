@@ -36,8 +36,8 @@ class Mahasiswa extends Model
             if (isset($cv)) {
                 $this->cv = $cv;
             }
-            $this->save();
-            $this->user->save();
+            $this->saveOrFail();
+            $this->user->saveOrFail();
 
             return true;
         } catch (\Throwable $th) {
@@ -48,12 +48,17 @@ class Mahasiswa extends Model
 
     public static function getMahasiswa($keyword)
     {
-        $result = Mahasiswa::join('users', 'NIM_Mahasiswa', '=', 'Pengguna_NIM')
-        ->where('nama', 'LIKE', "%$keyword%")
-        ->orWhere('role', 'LIKE', "%$keyword%")
-        ->orWhere('wa', 'LIKE', "%$keyword%")->get();
+        try {
+            $result = Mahasiswa::join('users', 'NIM_Mahasiswa', '=', 'Pengguna_NIM')
+            ->where('nama', 'LIKE', "%$keyword%")
+            ->orWhere('role', 'LIKE', "%$keyword%")
+            ->orWhere('wa', 'LIKE', "%$keyword%")->get();
 
-        return $result;
+            return $result;
+        } catch (\Throwable $th) {
+            print($th);
+            return [];
+        }
     }
 
     public function profileFo()

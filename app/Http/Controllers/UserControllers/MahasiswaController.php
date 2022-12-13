@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\UserControllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Mahasiswa;
+use App\Models\Ketua;
+use App\Models\Tim;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,7 +32,6 @@ class MahasiswaController extends Controller
     // logic finish
     public function reqUnggah(Request $request)
     {
-        $request = new Request(['nama'=>'yo', 'role'=>'yo', 'nomorWA'=>'yo', 'cv'=>'cv']);
         $mahasiswa = Auth::user()->mahasiswa;
 
         $pesanDataBerhasilDiunggah = $mahasiswa->setData($request->nama, $request->role, $request->nomorWA, $request->cv);
@@ -39,17 +39,58 @@ class MahasiswaController extends Controller
         if($pesanDataBerhasilDiunggah){
             return view('home', ['pesan'=>'Data berhasil diunggah!']);
         }
+
+        return view('home', ['error'=>'Data gagal terunggah. Silakan coba kembali!']);
     }
 
-    // logic finish
-    public function reqMahasiswa(Request $request)
+    public function reqMenuBuatTim()
+    {
+        return view('home');
+    }
+
+    public function batalBuatTim()
+    {
+        return view('home');
+    }
+
+    public function reqBuatTim(Request $request)
     {
         $input = $request->validate([
-            'input'=>'required'
+            'nama' => 'required|unique:tim,namaTim|max:20',
+            'namaTim' => 'required|max:20',
+            'lomba' => 'required|max:20',
+            'anggota' => 'array'
         ]);
 
-        $result = Mahasiswa::getMahasiswa($input['input']);
+        $user = Auth::user();
 
-        return view('home', ['result'=>$result]);
+        $succesCreatedKetua = Ketua::createKetua($user->nim,$input['nama']);
+        $succesCreatedTim = Tim::createTim($input['nama'],$user->nim,$input['lomba'],$input['anggota']);
+
+        if($succesCreatedKetua && $succesCreatedTim){
+            return view('home',['success'=>'Tim telah dibuat!']);
+        }
+
+        return view('home',['error'=>'Tim gagal dibuat. Silakan coba kembali!']);
+    }
+
+    public function reqMenuCariTim()
+    {
+        return view('home');
+    }
+
+    public function reqTim(Request $request)
+    {
+        $input = $request->validate([
+            'keyword' => 'required|string'
+        ]);
+
+        $result = Tim::getTim($input['keyword']);
+
+        if(sizeof($result)>0){
+            return view('home',['data'=>$result]);
+        }
+
+        return view('home', ['error'=>'Tim tidak ada!']);
     }
 }

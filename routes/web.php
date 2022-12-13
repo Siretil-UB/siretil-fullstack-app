@@ -69,9 +69,5 @@ Route::middleware('auth')->group( function () {
 
 
 // Test route
-Route::middleware('auth')->group( function () {
-        Route::get("/tes1", [MahasiswaController::class, 'getProfile']);
-        Route::get("/tes2", [KetuaController::class, 'getProfile']);
-    }
-);
-Route::get("/tes3", [MahasiswaController::class, 'reqUnggah']);
+Route::get("/tes1", [MahasiswaController::class, 'reqTim']);
+Route::get("/tes2", [KetuaController::class, 'reqUnggah']);
