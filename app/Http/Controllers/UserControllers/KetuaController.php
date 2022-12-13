@@ -31,19 +31,28 @@ class KetuaController extends Controller
             $anggota = $tim->anggota;
 
             $tim = (array) $tim->getAttributes();
-            $tim['anggota'] = $anggota->getAttributes();
+            $anggota = $anggota->mahasiswa->all();
+
+            $dataAnggota = array();
+            foreach ($anggota as $v) {
+                $v['nama'] = $v->user->nama;
+                array_push($dataAnggota, $v->getAttributes());
+                // array_push($v, $v->mahasiswa);
+            }
+            $tim['anggota'] = $dataAnggota;
 
             return view('team',[
                 'page' => 'team',
                 'isKetua' => true,
-                'tim' => 'tim'
+                'tim' => $tim
             ]);
         } catch (\Throwable $th) {
             return view('team',[
                 'page' => 'team',
                 'user' => Auth::user()->nama,
                 'isKetua' => true,
-                'error' => 'Gagal mengambil data tim'
+                'error' => $th,
+                'tim'=> $tim
             ]);
         }
     }

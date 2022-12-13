@@ -5,11 +5,12 @@
 @endsection
 
 @section('content')
+@dd($tim)
     <p class="mt-5 mb-4 text-4xl font-bold font-roboto-slab">TIM ANDA</p>
     <div class="w-full h-[80%] bg-blue-700 p-10">
         @if ($isKetua==true)
-            <h2 class="mb-2 text-4xl font-bold text-white">NAMA TIM</h2>
-            <h4 class="text-2xl font-normal text-white">Lomba yang diikuti</h4>
+            <h2 class="mb-2 text-4xl font-bold text-white">{{$tim['namaTim']}}</h2>
+            <h4 class="text-2xl font-normal text-white">{{$tim['lomba']}}</h4>
             <div class="bg-blue-400 w-full h-[70%] mt-4 p-4 overflow-auto">
                 <div class="flex justify-between">
                     <p class="text-3xl font-normal text-white">Kriteria Anggota</p>
@@ -25,7 +26,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="">
+                        @foreach ($tim['anggota'] as $a)
+                            <tr class="">
+                                <td class="border border-slate-400">{{$a->role}}</td>
+                                <td class="border border-slate-400">FILKOM</td>
+                                <td class="border border-slate-400">TIF</td>
+                                <td class="border border-slate-400">{{$a}}</td>
+                            </tr>
+                        @endforeach
+
+                        {{-- <tr class="">
                             <td class="border border-slate-400">Ketua</td>
                             <td class="border border-slate-400">FILKOM</td>
                             <td class="border border-slate-400">TIF</td>
@@ -42,7 +52,7 @@
                             <td class="border border-slate-400">FILKOM</td>
                             <td class="border border-slate-400">SI</td>
                             <td class="border border-slate-400">Andro</td>
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
             </div>

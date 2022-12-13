@@ -21,4 +21,8 @@ class Anggota extends Model
         return $this->hasOne(Tim::class,'namaTim', 'Tim_namaTim');
     }
 
+    public function mahasiswa(){
+        return $this->hasOne(Mahasiswa::class, 'Pengguna_NIM', 'Mahasiswa_Pengguna_NIM');
+    }
+
 }

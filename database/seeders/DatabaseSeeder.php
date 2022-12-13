@@ -73,6 +73,11 @@ class DatabaseSeeder extends Seeder
             'Tim_namaTim' => 'tim1',
             'Mahasiswa_Pengguna_NIM' => '205150201111002'
         ]);
+        Anggota::factory()->create([
+            'Tim_Ketua_Pengguna_NIM' => '205150201111001',
+            'Tim_namaTim' => 'tim1',
+            'Mahasiswa_Pengguna_NIM' => '205150201111003'
+        ]);
 
     }
 }
