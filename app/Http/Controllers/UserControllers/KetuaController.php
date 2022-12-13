@@ -123,9 +123,9 @@ class KetuaController extends Controller
                 array_push($dataPengajuan,$value->getAttributes());
             }
 
-            return view('notification',['result'=>$dataPengajuan, 'page']);
+            return view('notification',['result'=>$dataPengajuan, 'page'=>'notification',]);
         } catch (\Throwable $th) {
-            return view('notification',['error'=>'gagal mengambil data']);
+            return view('notification',['error'=>'gagal mengambil data', 'page'=>'notification']);
         }
     }
 }
