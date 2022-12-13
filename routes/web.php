@@ -29,7 +29,6 @@ Route::middleware('auth')->group( function () {
             Route::get("/", [KetuaController::class, 'getHome'])->name('ketua-home');
             Route::get("/team", [KetuaController::class, 'getTim']);
             Route::get("/profile", [KetuaController::class, 'getProfile']);
-
             Route::get("/notification", function(){
                 return view('notification', [
                     'page' => 'notification',
@@ -44,6 +43,7 @@ Route::middleware('auth')->group( function () {
         Route::get("/", [MahasiswaController::class, 'getHome'])->name('mahasiswa-home');
         Route::get("/search", [MahasiswaController::class, 'reqMenuCariTim']);
         Route::get("/profile", [MahasiswaController::class, 'getProfile']);
+        Route::get('/team',[MahasiswaController::class, 'getTim']);
         Route::get("/notification", function(){
             return view('notification', [
                 'page' => 'notification',

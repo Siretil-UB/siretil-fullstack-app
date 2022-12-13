@@ -35,6 +35,13 @@ class MahasiswaController extends Controller
         ]);
     }
 
+    public function getTim() {
+        return view('team', [
+            'page'=>'team',
+            'isKetua'=>false
+        ]);
+    }
+
     public function reqMenuUnggahData()
     {
         return view('home');
