@@ -99,9 +99,18 @@ class MahasiswaController extends Controller
 
     public function reqMenuCariTim()
     {
+
+        $tim = Tim::all();
+
+        $timData = array();
+        foreach ($tim as  $v) {
+            array_push($timData,$v->getAttributes());
+        }
+
         return view('search', [
             'page' => 'search',
-            'isKetua' => false
+            'isKetua' => false,
+            'tim' => $timData
         ]);
     }
 
@@ -114,9 +123,17 @@ class MahasiswaController extends Controller
         $result = Tim::getTim($input['keyword']);
 
         if(sizeof($result)>0){
-            return view('home',['data'=>$result]);
+            $resultData = array();
+            foreach ($result as $r) {
+                array_push($resultData,$r->getAttributes());
+            }
+            return view('search',[
+            'data'=>$resultData,'page' => 'search',
+            'isKetua' => false,
+            ]);
         }
 
-        return view('home', ['error'=>'Tim tidak ada!']);
+        return view('search', ['error'=>'Tim tidak ada!','page' => 'search',
+        'isKetua' => false,]);
     }
 }

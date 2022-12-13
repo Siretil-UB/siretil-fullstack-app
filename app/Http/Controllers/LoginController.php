@@ -24,6 +24,10 @@ class LoginController extends Controller
         $result = User::validate($request->nim,$request->password);
 
         if ($result) {
+            $user = Auth::user();
+            if($user->isKetua){
+                return redirect('/ketua');
+            }
             return redirect('/');
         }
 

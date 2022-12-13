@@ -34,6 +34,29 @@ class DatabaseSeeder extends Seeder
             'isKetua' => true
         ]);
 
+        Ketua::factory()->create([
+            'Pengguna_NIM' => '205150201111004'
+        ]);
+
+        User::factory()->create([
+            'nama' => 'John De',
+            'nim' => '205150201111004',
+            'nim_ketua' => '205150201111004',
+            'password' => Hash::make("123456789"),
+            'isKetua' => true
+        ]);
+        Ketua::factory()->create([
+            'Pengguna_NIM' => '205150201111005'
+        ]);
+
+        User::factory()->create([
+            'nama' => 'John Wu',
+            'nim' => '205150201111005',
+            'nim_ketua' => '205150201111005',
+            'password' => Hash::make("123456789"),
+            'isKetua' => true
+        ]);
+
         Mahasiswa::factory()->create([
             'Pengguna_NIM' => '205150201111002',
             'cv' => 'tes',
@@ -66,6 +89,17 @@ class DatabaseSeeder extends Seeder
             'namaTim' => 'tim1',
             'Ketua_Pengguna_NIM' => '205150201111001',
             'lomba' => 'lomba1'
+        ]);
+
+        Tim::factory()->create([
+            'namaTim' => 'tim2',
+            'Ketua_Pengguna_NIM' => '205150201111004',
+            'lomba' => 'lomba1'
+        ]);
+        Tim::factory()->create([
+            'namaTim' => 'tim3',
+            'Ketua_Pengguna_NIM' => '205150201111005',
+            'lomba' => 'lomba2'
         ]);
 
         Anggota::factory()->create([

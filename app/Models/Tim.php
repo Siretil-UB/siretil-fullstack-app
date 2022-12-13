@@ -62,7 +62,7 @@ class Tim extends Model
                         ->orWhere('Ketua_Pengguna_NIM','LIKE',"%$keyword%")
                         ->orWhere('lomba', 'LIKE', "%$keyword%")
                         ->get();
-            print_r($result);
+            // print_r($result);
             return $result;
         } catch (\Throwable $th) {
             //throw $th;
@@ -75,10 +75,11 @@ class Tim extends Model
     {
         try {
             $tim = Tim::where('namaTim','=',$namaTim)->firstOrFail();
+            $tim->anggota->deleteOrFail();
             $tim->deleteOrFail();
             return true;
         } catch (\Throwable $th) {
-            print($th);
+            print_r($th);
             return false;
         }
     }
