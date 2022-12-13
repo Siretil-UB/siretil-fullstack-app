@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Anggota;
 use App\Models\Ketua;
 use App\Models\Mahasiswa;
 use App\Models\Tim;
@@ -65,6 +66,12 @@ class DatabaseSeeder extends Seeder
             'namaTim' => 'tim1',
             'Ketua_Pengguna_NIM' => '205150201111001',
             'lomba' => 'lomba1'
+        ]);
+
+        Anggota::factory()->create([
+            'Tim_Ketua_Pengguna_NIM' => '205150201111001',
+            'Tim_namaTim' => 'tim1',
+            'Mahasiswa_Pengguna_NIM' => '205150201111002'
         ]);
 
     }

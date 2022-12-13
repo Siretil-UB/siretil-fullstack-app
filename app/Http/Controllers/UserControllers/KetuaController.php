@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\UserControllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Anggota;
 use App\Models\Ketua;
 use App\Models\Tim;
 use App\Models\Mahasiswa;
@@ -11,9 +12,50 @@ use Illuminate\Support\Facades\Auth;
 
 class KetuaController extends Controller
 {
+    public function getHome()
+    {
+        return view(
+            'home',
+            [
+                'page' => 'home',
+                'user' => Auth::user()->nama,
+                'isKetua' => true
+            ]
+        );
+    }
+
+    public function getTim()
+    {
+        try {
+            $tim = Auth::user()->ketua->tim;
+            $anggota = $tim->anggota;
+
+            $tim = (array) $tim->getAttributes();
+            $tim['anggota'] = $anggota->getAttributes();
+
+            return view('team',[
+                'page' => 'team',
+                'isKetua' => true,
+                'tim' => 'tim'
+            ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('ketua-home',[
+                'page' => 'home',
+                'user' => Auth::user()->nama,
+                'isKetua' => true,
+                'error' => 'Gagal mengambil data tim'
+            ]);
+        }
+    }
+
     public function getProfile(){
         $profileInfo = Auth::user()->ketua->profileFo();
-        return view('home', ['profileInfo'=>$profileInfo]);
+        return view('home', [
+            'page' => 'home',
+            'user' => Auth::user()->nama,
+            'isKetua' => true,
+            'profileInfo'=>$profileInfo
+        ]);
     }
 
     public function reqHapusTim(Request $request)
