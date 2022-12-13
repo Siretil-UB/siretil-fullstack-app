@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserControllers\KetuaController;
+use App\Http\Controllers\UserControllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,24 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::post("/login", [LoginController::class, 'authenticate'])->name('login');
-Route::get("/login", [LoginController::class, 'getForm']);
-Route::delete('logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
+Route::middleware('guest')->group(function(){
+    Route::post("/login", [LoginController::class, 'login'])->name('login');
+    Route::get("/login", [LoginController::class, 'loginForm']);
+});
 
 // protected route
 Route::middleware('auth')->group( function () {
+    // ketua route
+    Route::middleware('can:accessKetua,App\Http\Models\User')->group(function () {
         Route::get("/", function(){
             return view('home', [
                 'page' => 'home'
-            ]);
-        });
-        Route::get("/profile", function(){
-            return view('profile', [
-                'page' => 'profile'
             ]);
         });
         Route::get("/search", function(){
@@ -49,5 +45,25 @@ Route::middleware('auth')->group( function () {
                 'page' => 'notification'
             ]);
         });
+    });
+
+    // mahasiswa route
+    Route::middleware('can:accessMahasiswa,App\Http\Models\User')->group(function(){
+        Route::get("/profile", function(){
+            return view('profile', [
+                'page' => 'profile'
+            ]);
+        });
+    });
+
+    Route::delete('logout', [LoginController::class, 'logout'])->name('logout');
+    }
+);
+
+
+// Test route
+Route::middleware('auth')->group( function () {
+        Route::get("/tes1", [MahasiswaController::class, 'getProfile']);
+        Route::get("/tes2", [KetuaController::class, 'getProfile']);
     }
 );
