@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Ketua;
 use App\Models\Mahasiswa;
+use App\Models\Tim;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
@@ -58,6 +59,12 @@ class DatabaseSeeder extends Seeder
             'nim' => '205150201111003',
             'password' => Hash::make("123456789"),
             'nim_mahasiswa' => '205150201111003'
+        ]);
+
+        Tim::factory()->create([
+            'namaTim' => 'tim1',
+            'Ketua_Pengguna_NIM' => '205150201111001',
+            'lomba' => 'lomba1'
         ]);
 
     }
