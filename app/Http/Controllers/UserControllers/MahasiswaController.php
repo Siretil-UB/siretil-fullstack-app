@@ -29,11 +29,12 @@ class MahasiswaController extends Controller
          * isinya derivative array
          * ['nama', 'role', 'cv', 'wa', 'nim']
          */
-        // $profileInfo = Auth::user()->mahasiswa->profileFo();
+        $profileInfo = Auth::user()->mahasiswa->profileFo();
         return view('profile', [
             'user'=>Auth::user(),
             'page'=>'profile',
-            'isKetua'=>false
+            'isKetua'=>false,
+            'data' => $profileInfo
         ]);
     }
 
@@ -46,7 +47,7 @@ class MahasiswaController extends Controller
 
     public function reqMenuUnggahData()
     {
-        return view('home');
+        return redirect()->route('profileMahasiswa');
     }
 
     public function batalUnggahData()

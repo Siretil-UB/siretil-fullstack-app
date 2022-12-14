@@ -54,7 +54,7 @@ Route::middleware('auth')->group( function () {
     Route::middleware('can:accessMahasiswa,App\Http\Models\User')->group(function(){
         // non use case
         Route::get("/", [MahasiswaController::class, 'getHome'])->name('mahasiswa-home');
-        Route::get("/profile", [MahasiswaController::class, 'getProfile']);
+        Route::get("/profile", [MahasiswaController::class, 'getProfile'])->name('profileMahasiswa');
         Route::get("/notification", [MahasiswaController::class, 'notification']);
 
         // use case cari tim
@@ -65,7 +65,7 @@ Route::middleware('auth')->group( function () {
         Route::post('/gabung',[MahasiswaController::class, 'reqGabungTim']);
 
         // use case unggah data diri
-        Route::get('/unggah',[MahasiswaController::class, 'reqMenuUnggahData'])->name('dataDiriMahasiswa');
+        Route::get('/rederict-profile',[MahasiswaController::class, 'reqMenuUnggahData'])->name('dataDiriMahasiswa');
         Route::get('/redirect-batal-unggah',[MahasiswaController::class, 'batalUnggahData']);
         Route::post('/unggah',[MahasiswaController::class, 'reqUnggah']);
 

@@ -64,7 +64,7 @@ class KetuaController extends Controller
             'page' => 'profile',
             'user' => Auth::user(),
             'isKetua' => true,
-            'profileInfo'=>$profileInfo
+            'data'=>$profileInfo
         ]);
     }
 
@@ -209,7 +209,7 @@ class KetuaController extends Controller
 
     public function reqMenuUnggahKriteria()
     {
-        return view('home');
+        return view('kriteria');
     }
 
     public function batalUnggahKriteria()
