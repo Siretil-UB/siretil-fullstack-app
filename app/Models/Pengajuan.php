@@ -16,7 +16,7 @@ class Pengajuan extends Model
 
     public function tim()
     {
-        return $this->hasOne(Tim::class,'namaTim','Tim_namaTim');
+        return $this->belongsTo(Tim::class, 'Tim_namaTim', 'namaTim');
     }
 
     public function mahasiswa(){

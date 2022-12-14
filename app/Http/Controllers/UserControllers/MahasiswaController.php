@@ -4,6 +4,7 @@ namespace App\Http\Controllers\UserControllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ketua;
+use App\Models\Message;
 use App\Models\Pengajuan;
 use App\Models\Tim;
 use Illuminate\Http\Request;
@@ -157,5 +158,17 @@ class MahasiswaController extends Controller
         } catch (\Throwable $th) {
             return redirect()->route('home',['error'=>'Gagal mengajukan gabung']);
         }
+    }
+
+    public function notification()
+    {
+        $message = Auth::user()->messageReceived;
+        $messageData = Message::getKetuaNotification($message);
+
+        return view('notification', ['page' => 'notification', 'isKetua' => false, 'data'=>$messageData]);
+    }
+
+    public function tes()
+    {
     }
 }

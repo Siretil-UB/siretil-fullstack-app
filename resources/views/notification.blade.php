@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+
+@dd($data)
     <p class="mt-5 mb-4 text-4xl font-bold font-roboto-slab">NOTIFIKASI</p>
     <div class="flex justify-between">
         <button class="w-full py-4 text-2xl italic font-bold text-white bg-blue-700">NOTIFIKASI MASUK</button>
@@ -14,8 +16,8 @@
             <table class="w-full max-h-[80%] overflow-auto text-center bg-white border-collapse">
                 <thead>
                     <tr>
+                        <th class="text-xl border border-slate-400">Nama</th>
                         <th class="text-xl border border-slate-400">Role</th>
-                        <th class="text-xl border border-slate-400">Fakultas</th>
                         <th class="text-xl border border-slate-400">Jurusan</th>
                         <th class="text-xl border border-slate-400">Nama</th>
                         <th class="text-xl border border-slate-400">No WA</th>

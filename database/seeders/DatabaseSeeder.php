@@ -8,6 +8,7 @@ use App\Models\Anggota;
 use App\Models\Ketua;
 use App\Models\Kriteria;
 use App\Models\Mahasiswa;
+use App\Models\Message;
 use App\Models\Pengajuan;
 use App\Models\Tim;
 use Illuminate\Database\Seeder;
@@ -142,5 +143,18 @@ class DatabaseSeeder extends Seeder
             'Mahasiswa_Pengguna_NIM' => '205150201111003'
         ]);
 
+        Message::factory()->create([
+            'message' => 'message1',
+            'sender' => '205150201111001',
+            'receiver' => '205150201111002',
+            'sent' => now()
+        ]);
+
+        Message::factory()->create([
+            'message' => 'message2',
+            'sender' => '205150201111001',
+            'receiver' => '205150201111002',
+            'sent' => now()
+        ]);
     }
 }

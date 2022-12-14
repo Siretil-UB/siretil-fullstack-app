@@ -28,7 +28,7 @@ class Tim extends Model
 
     public function pengajuan()
     {
-        return $this->belongsTo(Pengajuan::class, 'namaTim', 'Tim_namaTim');
+        return $this->hasMany(Pengajuan::class, 'Tim_namaTim', 'namaTim');
     }
 
     public function kriteria()

@@ -36,9 +36,10 @@ Route::middleware('auth')->group( function () {
             Route::post('/kriteria', [KetuaController::class, 'reqUnggah']);
             Route::get("/redirect-batal-unggah-kriteria", [KetuaController::class, 'batalUnggahKriteria']);
 
-            // TODO
             // use case setujui permintaan
             Route::get("/notification", [KetuaController::class, 'reqMenuPengajuan']);
+            Route::get("/tolakPengajuan", [KetuaController::class, 'reqTolak']);
+            Route::post("/setujuPengajuan", [KetuaController::class, 'reqSetuju']);
 
             // use case hapus tim
             Route::post('/hapus', [KetuaController::class, 'reqHapusTim'])->name('user.index');
@@ -54,6 +55,7 @@ Route::middleware('auth')->group( function () {
         // non use case
         Route::get("/", [MahasiswaController::class, 'getHome'])->name('mahasiswa-home');
         Route::get("/profile", [MahasiswaController::class, 'getProfile']);
+        Route::get("/notification", [MahasiswaController::class, 'notification']);
 
         // use case cari tim
         Route::get("/search", [MahasiswaController::class, 'reqMenuCariTim']);
@@ -72,14 +74,6 @@ Route::middleware('auth')->group( function () {
         Route::post('/buat-tim',[MahasiswaController::class, 'reqBuatTim']);
         Route::get('/redirect-batal-buat-tim', [MahasiswaController::class, 'batalBuatTim']);
         Route::get('/team',[MahasiswaController::class, 'getTim'])->name('timMahasiswa');
-
-        // TODO
-        Route::get("/notification", function(){
-            return view('notification', [
-                'page' => 'notification',
-                'isKetua' => false
-            ]);
-        });
     });
 
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
@@ -88,5 +82,5 @@ Route::middleware('auth')->group( function () {
 
 
 // Test route
-Route::get("/tes1", [MahasiswaController::class, 'modelTes']);
-Route::get("/tes2", [KetuaController::class, 'modelTes']);
+Route::get("/tes1", [MahasiswaController::class, 'tes']);
+Route::get("/tes2", [KetuaController::class, 'tes']);

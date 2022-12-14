@@ -55,6 +55,16 @@ class User extends Authenticatable
         return $this->hasOne(Ketua::class, 'Pengguna_NIM', 'NIM_Ketua');
     }
 
+    public function messageReceived()
+    {
+        return $this->hasMany(Message::class, 'receiver', 'nim');
+    }
+
+    public function messageSent()
+    {
+        return $this->hasMany(Message::class, 'sender', 'nim');
+    }
+
     public static function validate($uname, $password)
     {
         if(isset($uname) && isset($password)){

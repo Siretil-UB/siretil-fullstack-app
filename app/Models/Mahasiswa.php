@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Mahasiswa extends Model
 {
@@ -74,5 +75,30 @@ class Mahasiswa extends Model
     public function profileFo()
     {
         return ['nama'=>$this->user->nama, 'role'=>$this->role, 'cv'=>$this->cv, 'wa'=>$this->wa, 'nim'=>$this->user->nim];
+    }
+
+    public static function sendMsg($nim, $disetujui)
+    {
+        try {
+            $receiver = User::all()->firstWhere($nim);
+
+            if ($disetujui) {
+                $disetujui = 'Selamat, Anda tergabung dalam tim!';
+            } else {
+                $disetujui = 'Mohon maaf, Anda masih belum memenuhi kualifikasi dari tim';
+            }
+
+            $message = new Message();
+            $message->message = $disetujui;
+            $message->sender = Auth::user()->nim;
+            $message->receiver = $receiver->nim;
+            $message->sent = now();
+
+            return true;
+        } catch (\Throwable $th) {
+            print($th);
+
+            return false;
+        }
     }
 }
