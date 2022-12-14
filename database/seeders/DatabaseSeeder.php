@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Anggota;
 use App\Models\Ketua;
+use App\Models\Kriteria;
 use App\Models\Mahasiswa;
 use App\Models\Pengajuan;
 use App\Models\Tim;
@@ -92,6 +93,14 @@ class DatabaseSeeder extends Seeder
             'lomba' => 'lomba1'
         ]);
 
+        Kriteria::factory()->create([
+            'role' => "FE Dev",
+            'Tim_Ketua_Pengguna_NIM' => '205150201111001',
+            'Tim_namaTim' => 'tim1',
+            'fakultas' => 'Fakultas Ilmu Komputer',
+            'jurusan' => 'Teknik Informatika'
+        ]);
+
         Tim::factory()->create([
             'namaTim' => 'tim2',
             'Ketua_Pengguna_NIM' => '205150201111004',
@@ -108,6 +117,7 @@ class DatabaseSeeder extends Seeder
             'Tim_namaTim' => 'tim1',
             'Mahasiswa_Pengguna_NIM' => '205150201111002'
         ]);
+
         Anggota::factory()->create([
             'Tim_Ketua_Pengguna_NIM' => '205150201111001',
             'Tim_namaTim' => 'tim1',

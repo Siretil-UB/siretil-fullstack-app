@@ -140,4 +140,15 @@ class KetuaController extends Controller
             return view('notification',['error'=>'gagal mengambil data', 'page'=>'notification']);
         }
     }
+
+    public function modelTes()
+    {
+        $user = Auth::user();
+        $ketua = $user->ketua;
+        $tim = $ketua->tim;
+        $pengajuan = $tim->pengajuan;
+
+        print_r($pengajuan);
+        // print_r($ketua);
+    }
 }

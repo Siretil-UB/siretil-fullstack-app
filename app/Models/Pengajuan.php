@@ -12,16 +12,15 @@ class Pengajuan extends Model
 
     protected $table = 'pengajuan';
 
-    protected $fillable = ['Tim_Ketua_Pengguna_NIM','Tim_namaTim','~'];
     public $timestamps = false;
-
-    // public function __construct() {
-        // Auth::user()->ketua->sendMsg("created!");
-    // }
 
     public function tim()
     {
-        return $this->hasOne('tim','namaTim','Tim_namaTim');
+        return $this->hasOne(Tim::class,'namaTim','Tim_namaTim');
+    }
+
+    public function mahasiswa(){
+        return $this->hasOne(Mahasiswa::class, 'Pengguna_NIM', 'Mahasiswa_Pengguna_NIM');
     }
 
 }

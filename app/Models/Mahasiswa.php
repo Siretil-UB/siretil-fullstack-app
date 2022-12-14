@@ -26,6 +26,11 @@ class Mahasiswa extends Model
         return $this->belongsTo(Anggota::class, 'Pengguna_NIM', 'Mahasiswa_Pengguna_NIM');
     }
 
+    public function pengajuan()
+    {
+        return $this->belongsTo(Pengajuan::class, 'Pengguna_NIM', 'Mahasiswa_Pengguna_NIM');
+    }
+
     public function setData($nama, $role, $nomorWA, $cv)
     {
         try {
