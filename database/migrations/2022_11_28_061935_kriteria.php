@@ -14,13 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('kriteria', function (Blueprint $table) {
-            $table->string("role",10)->primary();
+            $table->string("role",10);
             $table->string('Tim_Ketua_Pengguna_NIM', 20);
             $table->string('Tim_namaTim', 20);
             $table->string("fakultas",30);
             $table->string("jurusan",30);
 
             $table->foreign(['Tim_Ketua_Pengguna_NIM', 'Tim_namaTim'])->references(['ketua_pengguna_NIM','namaTim'])->on('tim');
+            $table->primary(['role','Tim_Ketua_Pengguna_NIM','Tim_namaTim']);
         });
     }
 
