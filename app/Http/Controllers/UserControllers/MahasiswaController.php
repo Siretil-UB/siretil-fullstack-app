@@ -50,7 +50,7 @@ class MahasiswaController extends Controller
 
     public function batalUnggahData()
     {
-        return redirect('home');
+        return redirect()->route('dataDiriMahasiswa');
     }
 
     // logic finish
@@ -74,7 +74,7 @@ class MahasiswaController extends Controller
 
     public function batalBuatTim()
     {
-        return view('home');
+        return redirect()->route('timMahasiswa');
     }
 
     public function reqBuatTim(Request $request)

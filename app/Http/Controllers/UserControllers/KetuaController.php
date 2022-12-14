@@ -101,7 +101,7 @@ class KetuaController extends Controller
     }
 
     public function reqMenuCariAnggota(){
-        return view('home');
+        return view('searchMhs', ['page'=>'searchMhs', 'isKetua'=>true]);
     }
 
     public function reqUnggah(Request $request)
@@ -139,5 +139,15 @@ class KetuaController extends Controller
         } catch (\Throwable $th) {
             return view('notification',['error'=>'gagal mengambil data', 'page'=>'notification']);
         }
+    }
+
+    public function reqMenuUnggahKriteria()
+    {
+        return view('home');
+    }
+
+    public function batalUnggahKriteria()
+    {
+        return redirect()->route('kriteriaKetua');
     }
 }
