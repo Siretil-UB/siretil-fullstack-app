@@ -108,7 +108,6 @@ class Tim extends Model
 
             return true;
         } catch (\Throwable $th) {
-            print($th);
             return false;
         }
     }

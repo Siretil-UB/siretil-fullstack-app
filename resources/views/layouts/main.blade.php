@@ -28,11 +28,11 @@
             @endif ">
                 <i class="fa-solid fa-house"></i>
             </a>
-            {{-- <a href="/ketua/search" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'search')
+            <a href="/ketua/search" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'search')
                 bg-orange-400
             @endif">
                 <i class="fa-solid fa-magnifying-glass"></i>
-            </a> --}}
+            </a>
             <a href="/ketua/team" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'team')
                 bg-orange-400
             @endif">
@@ -108,6 +108,7 @@
         <h2 class="text-2xl italic font-bold text-blue-800">UNIVERSITAS BRAWIJAYA</h2>
         @yield('content')
     </div>
+    {{-- <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script> --}}
 </body>
 
 </html>
