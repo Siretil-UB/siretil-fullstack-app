@@ -123,9 +123,9 @@ class KetuaController extends Controller
         $result = $tim->setKriteria($input['namaTim'],$input['role'],$input['jurusan'],$input['fakultas']);
 
         if($result){
-            return redirect()->route('ketua-tim')->with('msg-success',"Berhasil menambahkan kriteria");
+            return redirect()->route('ketua-kriteria')->with('msg-success',"Berhasil menambahkan kriteria");
         }
-        return redirect()->route('ketua-tim')->with('msg-failed',"Gagal menambahkan kriteria");
+        return redirect()->route('ketua-kriteria')->with('msg-failed',"Gagal menambahkan kriteria");
     }
 
     public function reqMenuPengajuan()
@@ -220,10 +220,27 @@ class KetuaController extends Controller
         ]);
     }
 
+    public function reqKriteria()
+    {
+        $tim = Auth::user()->ketua->tim;
+        $kriteria = $tim->kriteria;
+
+        $kriteriaData = array();
+        foreach ($kriteria as  $k) {
+            array_push($kriteriaData, $k->getAttributes());
+        }
+
+        return view('team_kriteria',[
+            'page' => 'team',
+            'isKetua' => true,
+            'tim' => $kriteriaData
+        ]);
+    }
+
     public function batalUnggahKriteria()
     {
         print_r('yy');
-        return redirect()->route('ketua-tim');
+        return redirect()->route('ketua-kriteria');
     }
 
     public function tes()

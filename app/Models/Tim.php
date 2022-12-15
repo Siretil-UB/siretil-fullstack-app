@@ -33,7 +33,7 @@ class Tim extends Model
 
     public function kriteria()
     {
-        return $this->belongsTo(Kriteria::class, 'namaTim', 'Tim_namaTim');
+        return $this->hasMany(Kriteria::class, 'Tim_namaTim', 'namaTim');
     }
 
     public static function createTim($namaTim, $ketua, $lomba, $anggota)

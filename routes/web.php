@@ -35,6 +35,7 @@ Route::middleware('auth')->group( function () {
             Route::get("/kriteria", [KetuaController::class, 'reqMenuUnggahKriteria'])->name('kriteriaKetua');
             Route::post('/kriteria', [KetuaController::class, 'reqUnggah']);
             Route::get("/redirect-batal-unggah-kriteria", [KetuaController::class, 'batalUnggahKriteria']);
+            Route::get("/kriteria-all", [KetuaController::class, 'reqKriteria'])->name('ketua-kriteria');
 
             // use case setujui permintaan
             Route::get("/notification", [KetuaController::class, 'reqMenuPengajuan']);
