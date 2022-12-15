@@ -15,6 +15,6 @@ class Kriteria extends Model
 
     public function tim()
     {
-        return $this->hasOne(Tim::class, 'namaTim', 'Tim_namaTim');
+        return $this->hasMany(Tim::class, 'namaTim', 'Tim_namaTim');
     }
 }

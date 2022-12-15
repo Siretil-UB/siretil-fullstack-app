@@ -90,16 +90,17 @@ class KetuaController extends Controller
     public function reqMahasiswa(Request $request)
     {
         $input = $request->validate([
-            'keyword'=>'string'
+            'keyword'=>'string|min:1'
         ]);
 
         $result = Mahasiswa::getMahasiswa($input['keyword']);
 
-        if(sizeof($result)>0){
-            return view('searchMhs', ['data'=>$result, 'page'=>'searchMhs', 'isKetua'=>true]);
+        if((gettype($result)=='object' && sizeof($result)<=0) || (!$result)){
+            return view('searchMhs', ['data'=>null, 'error'=>'Anggota tidak ditemukan!', 'page'=>'searchMhs', 'isKetua'=>true]);
         }
 
-        return view('searchMhs', ['data'=>null, 'error'=>'Anggota tidak ada!', 'page'=>'searchMhs', 'isKetua'=>true]);
+        return view('searchMhs', ['data'=>$result, 'page'=>'searchMhs', 'isKetua'=>true]);
+
     }
 
     public function reqMenuCariAnggota(){
