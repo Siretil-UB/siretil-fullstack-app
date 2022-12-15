@@ -68,7 +68,7 @@ class Mahasiswa extends Model
             return $result;
         } catch (\Throwable $th) {
             print($th);
-            return [];
+            return false;
         }
     }
 
