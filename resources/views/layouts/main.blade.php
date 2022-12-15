@@ -38,11 +38,11 @@
             @endif">
                 <i class="fa-solid fa-users"></i>
             </a>
-            <a href="/ketua/profile" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'profile')
+            {{-- <a href="/ketua/profile" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'profile')
                 bg-orange-400
             @endif">
                 <i class="fa-sharp fa-solid fa-user"></i>
-            </a>
+            </a> --}}
             <a href="/ketua/notification" class="flex w-full items-center justify-center text-4xl text-white py-4 @if ($page == 'notification')
                 bg-orange-400
             @endif">

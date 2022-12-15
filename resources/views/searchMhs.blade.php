@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    {{-- @dd($mhs) --}}
     <p class="mt-5 mb-3 text-4xl font-bold font-roboto-slab">CARI ANGGOTA</p>
     <form action="/ketua/search" method="post" class="flex justify-between gap-x-5">
         @csrf
@@ -13,7 +14,6 @@
     </form>
     <div class="flex flex-row flex-wrap gap-3 mt-8 justify-evenly">
         @if (isset($data))
-        {{-- @dd($data) --}}
             @foreach ($data as $t)
             <a href="" class="flex justify-end h-[300px] w-[25%] flex-col rounded bg-gray-200 shadow-md">
                 <div class="w-full py-5 pl-10 text-sm font-bold bg-white">
@@ -39,7 +39,28 @@
             @elseif(isset($error))
                 <h1 class="text-4xl font-bold mt-[100px]">{{$error}}</h1>
             @else
-                <h1 class="text-4xl font-bold mt-[100px]">MASUKKAN KEYWORD!</h1>
+                @foreach ($mhs as $m)
+                <a href="" class="flex justify-end h-[300px] w-[25%] flex-col rounded bg-gray-200 shadow-md">
+                    <div class="w-full py-5 pl-10 text-sm font-bold bg-white">
+                        <div class="flex">
+                            <p class="w-[80px]">Nama</p>
+                            <p class="font-normal">: {{$m['nama']}}</p>
+                        </div>
+                        <div class="flex">
+                            <p class="w-[80px]">Nim</p>
+                            <p class="font-normal">: {{$m['Pengguna_NIM']}}</p>
+                        </div>
+                        <div class="flex">
+                            <p class="w-[80px]">Role</p>
+                            <p class="font-normal">: {{$m['role']}}</p>
+                        </div>
+                        <div class="flex">
+                            <p class="w-[80px]">No. Wa</p>
+                            <p class="font-normal">: {{$m['wa']}}</p>
+                        </div>
+                    </div>
+                </a>
+                @endforeach
 
             @endif
         {{-- <a href="" class="flex h-[250px] w-[30%] flex-col rounded bg-gray-200 shadow-md">

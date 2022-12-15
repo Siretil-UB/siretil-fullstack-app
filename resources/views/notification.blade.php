@@ -6,7 +6,7 @@
 
 @section('content')
 
-@dd($data)
+{{-- @dd($data) --}}
     <p class="mt-5 mb-4 text-4xl font-bold font-roboto-slab">NOTIFIKASI</p>
     <div class="flex justify-between">
         <button class="w-full py-4 text-2xl italic font-bold text-white bg-blue-700">NOTIFIKASI MASUK</button>
@@ -14,42 +14,47 @@
     </div>
     <div class="w-full h-[75%] bg-blue-700 p-10 overflow-auto">
             <table class="w-full max-h-[80%] overflow-auto text-center bg-white border-collapse">
-                <thead>
-                    <tr>
-                        <th class="text-xl border border-slate-400">Nama</th>
-                        <th class="text-xl border border-slate-400">Role</th>
-                        <th class="text-xl border border-slate-400">Jurusan</th>
-                        <th class="text-xl border border-slate-400">Nama</th>
-                        <th class="text-xl border border-slate-400">No WA</th>
-                        <th class="text-xl border border-slate-400">Informasi</th>
+                @if ($isKetua)
+                    <thead>
+                        <tr>
+                            <th class="text-xl border border-slate-400">User</th>
+                            <th class="text-xl border border-slate-400">Role</th>
+                            <th class="text-xl border border-slate-400">No. Wa</th>
+                            <th class="text-xl border border-slate-400">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data as $d)
+                        <tr class="">
+                            <td class="border border-slate-400">{{$d['pengaju']}}</td>
+                            <td class="border border-slate-400">{{$d['role']}}</td>
+                            <td class="border border-slate-400">{{$d['wa']}}</td>
+                            <td class="border border-slate-400">
+                                <button class="px-4 py-1 text-lg italic font-bold text-white bg-green-400 rounded">Terima</button>
+                                <button class="px-4 py-1 text-lg italic font-bold text-white bg-red-400 rounded">Tolak</button>
+                            </td>
+                        </tr>
+                        @endforeach
                     </tr>
-                </thead>
-                <tbody>
-                    <tr class="">
-                        <td class="border border-slate-400">Ketua</td>
-                        <td class="border border-slate-400">FILKOM</td>
-                        <td class="border border-slate-400">TIF</td>
-                        <td class="border border-slate-400">Abdul</td>
-                        <td class="border border-slate-400">081xxxxxxx</td>
-                        <td class="border border-slate-400"><button class="px-4 py-1 text-lg italic font-bold text-white bg-orange-400 rounded">Detail</button></td>
-                    </tr>
-                    <tr class="">
-                        <td class="border border-slate-400">Frontend Developer</td>
-                        <td class="border border-slate-400">FILKOM</td>
-                        <td class="border border-slate-400">TIF</td>
-                        <td class="border border-slate-400">Ahmad</td>
-                        <td class="border border-slate-400">081xxxxxxx</td>
-                        <td class="border border-slate-400"><button class="px-4 py-1 text-lg italic font-bold text-white bg-orange-400 rounded">Detail</button></td>
-                    </tr>
-                    <tr class="">
-                        <td class="border border-slate-400">UI/UX Designer</td>
-                        <td class="border border-slate-400">FILKOM</td>
-                        <td class="border border-slate-400">SI</td>
-                        <td class="border border-slate-400">Andro</td>
-                        <td class="border border-slate-400">081xxxxxxx</td>
-                        <td class="border border-slate-400"><button class="px-4 py-1 text-lg italic font-bold text-white bg-orange-400 rounded">Detail</button></td>
-                    </tr>
-                </tbody>
+                    </tbody>
+                @else
+                    <thead>
+                        <tr>
+                            <th class="text-xl border border-slate-400">Pengirim</th>
+                            <th class="text-xl border border-slate-400">Tanggal</th>
+                            <th class="text-xl border border-slate-400">Isi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data as $d)
+                            <tr class="">
+                                <td class="border border-slate-400">{{$d['sender']}}</td>
+                                <td class="border border-slate-400">{{$d['sent']}}</td>
+                                <td class="border border-slate-400">{{$d['message']}}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                    @endif
             </table>
         </div>
     </div>

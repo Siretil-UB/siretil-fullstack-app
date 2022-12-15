@@ -104,7 +104,16 @@ class KetuaController extends Controller
     }
 
     public function reqMenuCariAnggota(){
-        return view('searchMhs', ['page'=>'search', 'isKetua'=>true]);
+        $mahasiswa = Mahasiswa::all();
+
+        $mahasiswaData = array();
+        foreach ($mahasiswa as  $m) {
+            $mData = $m->getAttributes();
+            $mData['nama'] = $m->user->nama;
+            array_push($mahasiswaData, $mData);
+        }
+
+        return view('searchMhs', ['page'=>'search', 'isKetua'=>true, 'mhs'=>$mahasiswaData]);
     }
 
     public function reqUnggah(Request $request)

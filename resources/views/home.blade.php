@@ -14,9 +14,9 @@
             <a href="/ketua/team" class="flex h-[270px] w-[48%] flex-col justify-end rounded bg-gray-200 shadow-md">
                 <p class="w-full py-5 pl-10 text-2xl font-bold bg-white">TIM ANDA</p>
             </a>
-            <a href="/ketua/profile" class="flex h-[270px] w-[48%] flex-col justify-end rounded bg-gray-200 shadow-md">
+            {{-- <a href="/ketua/profile" class="flex h-[270px] w-[48%] flex-col justify-end rounded bg-gray-200 shadow-md">
                 <p class="w-full py-5 pl-10 text-2xl font-bold bg-white">PROFIL</p>
-            </a>
+            </a> --}}
             <a href="/ketua/notification" class="flex h-[270px] w-[48%] flex-col justify-end rounded bg-gray-200 shadow-md">
                 <p class="w-full py-5 pl-10 text-2xl font-bold bg-white">NOTIFIKASI</p>
             </a>
