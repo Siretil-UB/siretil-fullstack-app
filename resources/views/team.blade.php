@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-{{-- @dd($tim) --}}
 <p class="mt-5 mb-4 text-4xl font-bold font-roboto-slab">TIM ANDA</p>
     @if (session('msg-success'))
     <div class="px-6 py-5 mb-3 text-base text-green-700 bg-green-100 rounded-lg" role="alert">

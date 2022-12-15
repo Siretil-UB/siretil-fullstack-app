@@ -53,7 +53,7 @@ class KetuaController extends Controller
                 'user' => Auth::user()->nama,
                 'isKetua' => true,
                 'error' => $th,
-                'tim'=> $tim
+                'tim'=> "ERROR"
             ]);
         }
     }
