@@ -18,7 +18,7 @@ class Anggota extends Model
 
     public function tim()
     {
-        return $this->hasOne(Tim::class,'namaTim', 'Tim_namaTim');
+        return $this->belongsTo(Tim::class,'namaTim', 'Tim_namaTim');
     }
 
     public function mahasiswa(){

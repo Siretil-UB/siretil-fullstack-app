@@ -12,7 +12,7 @@
         <input type="text" name="keyword" class="w-5/6 border-2">
         <button type="submit" class="w-1/6 px-4 py-3 text-2xl italic font-bold text-white bg-orange-400 rounded">Cari Tim</button>
     </form>
-    <div class="flex flex-row flex-wrap gap-3 mt-8 justify-evenly">
+    <div class="flex flex-row flex-wrap h-[500px] gap-3 mt-8 overflow-auto justify-evenly">
         @if (isset($data))
             @foreach ($data as $t)
             <a href="" class="flex justify-end h-[300px] w-[25%] flex-col rounded bg-gray-200 shadow-md">

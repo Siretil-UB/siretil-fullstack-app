@@ -18,7 +18,8 @@ class mahasiswaFactory extends Factory
     {
         return [
             'Pengguna_NIM' => '0',
-
+            'wa' => fake('id_ID')->phoneNumber,
+            'cv' => 'cv.pdf'
         ];
     }
 }

@@ -29,16 +29,16 @@ class KetuaController extends Controller
     {
         try {
             $tim = Auth::user()->ketua->tim;
-            $anggota = $tim->anggota;
+            $anggota = $tim->anggota->all();
 
             $tim = (array) $tim->getAttributes();
-            $anggota = $anggota->mahasiswa->all();
+            // $anggota = $anggota->mahasiswa;
 
             $dataAnggota = array();
             foreach ($anggota as $v) {
+                $v = $v->mahasiswa;
                 $v['nama'] = $v->user->nama;
                 array_push($dataAnggota, $v->getAttributes());
-                // array_push($v, $v->mahasiswa);
             }
             $tim['anggota'] = $dataAnggota;
 
