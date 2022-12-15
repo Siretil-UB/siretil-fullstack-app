@@ -28,7 +28,7 @@ Route::middleware('auth')->group( function () {
         Route::prefix('/ketua')->group(function (){
             // non use case
             Route::get("/", [KetuaController::class, 'getHome'])->name('ketua-home');
-            Route::get("/team", [KetuaController::class, 'getTim']);
+            Route::get("/team", [KetuaController::class, 'getTim'])->name('ketua-tim');
             Route::get("/profile", [KetuaController::class, 'getProfile']);
 
             // use case unggah kriteria

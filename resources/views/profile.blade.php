@@ -1,7 +1,7 @@
 @extends('layouts.main') @section('title') Profile @endsection
 @section('content')
 {{-- @dd($user->mahasiswa->role) --}}
-@dd($data)
+{{-- @dd($data) --}}
 <p class="mt-5 mb-8 text-4xl font-bold font-roboto-slab">PROFIL</p>
 <div class="p-10 bg-blue-700 rounded">
     <p class="mb-2 text-2xl font-normal text-white">

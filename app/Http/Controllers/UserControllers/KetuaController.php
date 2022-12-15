@@ -104,14 +104,14 @@ class KetuaController extends Controller
     }
 
     public function reqMenuCariAnggota(){
-        return view('searchMhs', ['page'=>'searchMhs', 'isKetua'=>true]);
+        return view('searchMhs', ['page'=>'search', 'isKetua'=>true]);
     }
 
     public function reqUnggah(Request $request)
     {
         $input = $request->validate([
             'namaTim' => 'max:20',
-            'role' => 'required|10',
+            'role' => 'required|max:10',
             'jurusan' => 'required|max:30',
             'fakultas' => 'required|max:30'
         ]);
@@ -123,9 +123,9 @@ class KetuaController extends Controller
         $result = $tim->setKriteria($input['namaTim'],$input['role'],$input['jurusan'],$input['fakultas']);
 
         if($result){
-            return view('home', ['data'=>'Kriteria berhasil diunggah!', 'isKetua'=>true, 'page'=>'home']);
+            return redirect()->route('ketua-tim')->with('msg-success',"Berhasil menambahkan kriteria");
         }
-        return view('home', ['error'=>'Pesan berhasil diunggah!', 'isKetua'=>true, 'page'=>'home']);
+        return redirect()->route('ketua-tim')->with('msg-failed',"Gagal menambahkan kriteria");
     }
 
     public function reqMenuPengajuan()
@@ -210,12 +210,20 @@ class KetuaController extends Controller
 
     public function reqMenuUnggahKriteria()
     {
-        return view('kriteria');
+        $tim = Auth::user()->ketua->tim;
+        $tim = $tim->getAttributes()['namaTim'];
+
+        return view('kriteria', [
+            'isKetua' => true,
+            'page' => 'team',
+            'tim' => $tim
+        ]);
     }
 
     public function batalUnggahKriteria()
     {
-        return redirect()->route('kriteriaKetua');
+        print_r('yy');
+        return redirect()->route('ketua-tim');
     }
 
     public function tes()

@@ -6,7 +6,17 @@
 
 @section('content')
 {{-- @dd($tim['ketua_pengguna_NIM']) --}}
-    <p class="mt-5 mb-4 text-4xl font-bold font-roboto-slab">TIM ANDA</p>
+<p class="mt-5 mb-4 text-4xl font-bold font-roboto-slab">TIM ANDA</p>
+    @if (session('msg-success'))
+    <div class="px-6 py-5 mb-3 text-base text-green-700 bg-green-100 rounded-lg" role="alert">
+        {{session('msg-success')}}
+    </div>
+    @endif
+    @if (session('msg-failed'))
+    <div class="px-6 py-5 mb-3 text-base text-red-700 bg-red-100 rounded-lg" role="alert">
+        {{session('msg-failed')}}
+    </div>
+    @endif
     <div class="w-full h-[80%] bg-blue-700 p-10">
         @if ($isKetua==true)
             <h2 class="mb-2 text-4xl font-bold text-white">{{$tim['namaTim']}}</h2>
@@ -14,7 +24,9 @@
             <div class="bg-blue-400 w-full h-[70%] mt-4 p-4 overflow-auto">
                 <div class="flex justify-between">
                     <p class="text-3xl font-normal text-white">Anggota</p>
-                    <button class="px-4 py-2 mb-4 text-xl italic font-bold text-white bg-orange-400 rounded">Unggah Kriteria</button>
+                    <a href="/ketua/kriteria">
+                        <button class="px-4 py-2 mb-4 text-xl italic font-bold text-white bg-orange-400 rounded">Unggah Kriteria</button>
+                    </a>
                 </div>
                 <table class="w-full max-h-[80%] overflow-auto text-center bg-white border-collapse">
                     <thead>
@@ -34,34 +46,11 @@
                                 <td class="border border-slate-400">{{$a['nama']}}</td>
                             </tr>
                         @endforeach
-
-                        {{-- <tr class="">
-                            <td class="border border-slate-400">Ketua</td>
-                            <td class="border border-slate-400">FILKOM</td>
-                            <td class="border border-slate-400">TIF</td>
-                            <td class="border border-slate-400">Abdul</td>
-                        </tr>
-                        <tr class="">
-                            <td class="border border-slate-400">Frontend Developer</td>
-                            <td class="border border-slate-400">FILKOM</td>
-                            <td class="border border-slate-400">TIF</td>
-                            <td class="border border-slate-400">Ahmad</td>
-                        </tr>
-                        <tr class="">
-                            <td class="border border-slate-400">UI/UX Designer</td>
-                            <td class="border border-slate-400">FILKOM</td>
-                            <td class="border border-slate-400">SI</td>
-                            <td class="border border-slate-400">Andro</td>
-                        </tr> --}}
                     </tbody>
                 </table>
             </div>
             <div class="flex items-center justify-end mt-5 gap-x-4">
-                <form action="/ketua/search" method="POST">
-                    @csrf
-                    <input class="px-1 py-2" type="text" name="keyword">
-                    <button type="submit" class="px-4 py-2 ml-10 text-2xl italic font-bold text-white bg-orange-400 rounded">Cari Anggota Baru</button>
-                </form>
+                <a href="/ketua/search"><button type="submit" class="px-4 py-2 ml-10 text-2xl italic font-bold text-white bg-orange-400 rounded">Cari Anggota Baru</button></a>
                 <form action="/ketua/hapus" method="post">
                     @csrf
                     <input type="hidden" value={{$tim['namaTim']}} name="namaTim">
